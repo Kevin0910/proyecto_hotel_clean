@@ -1,9 +1,10 @@
-#navegador_lateral{
-  height: 700px;
+.navegador_lateral{
+  height: 100%;
   width: 24vh;
 }
 
 .mi-boton-nav:hover {
   background-color: rgb(101, 124, 197);
 }
+
 
