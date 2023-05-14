@@ -1,1 +1,60 @@
-<p>servicio works!</p>
+<div>
+  <div class="card color-bg-card mb-3" style="max-width: 70rem;">
+    <div class="card-header text-black">Seccion de servicio</div>
+    <div class="card-body">
+      <h5 class="card-title text-black">Servicio</h5>
+
+      <!-- Este va ser un selector con la etiqueta select con sus option -->
+      <form class="row g-3">
+        <div class="col-md-5">
+          <label for="validationServer01" class="form-label text-black">Fecha</label>
+          <input type="date" class="form-control" id="validationServer01" required>
+          <div class="valid-feedback">
+
+          </div>
+        </div>
+
+        <div class="col-md-5">
+          <label for="validationServer04" class="form-label text-black">Servicio</label>
+          <select class="form-select"  required>
+            <option class="text-black" selected disabled value="">Tipo de servicio</option>
+            <option class="text-black">Limpieza</option>
+          </select>
+          <div id="validationServer04Feedback" class="invalid-feedback">
+            Please select a valid state.
+          </div>
+        </div>
+
+
+        <div class="col-md-12">
+          <label for="validationServer03" class="form-label text-black">Descripción</label>
+          <input type="text" class="form-control" id="validationServer03"  required>
+        </div>
+
+        <!-- Aqui un buscador de empleados   -->
+        <div class="col-md-5">
+          <label for="validationServer04" class="form-label text-black">Personal asignada</label>
+          <select class="form-select"  required>
+            <option class="text-black" selected disabled value="">Buscador empleado</option>
+            <option class="text-black">Limpieza</option>
+          </select>
+        </div>
+
+        <!-- Aqui va un buscador de habitaciones -->
+        <div class="col-md-5">
+          <label for="validationServer04" class="form-label text-black">Habitacion</label>
+          <select class="form-select"  required>
+            <option class="text-black" selected disabled value="">Buscar habitacion</option>
+            <option class="text-black">Limpieza</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <button class="btn btn-success" type="submit">Submit form</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</div>

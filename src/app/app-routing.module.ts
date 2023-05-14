@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { PersonalComponent } from './components/personal/personal.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import { ServicioComponent } from './components/servicio/servicio.component';
+import { ClienteComponent } from './components/cliente/cliente.component';
 
 const routes: Routes = [
   {path: '', component: PersonalComponent, pathMatch: 'full'},
   {path: 'page-personal', component: PersonalComponent},
   {path: 'page-producto', component: ProductoComponent},
-  {path: 'page-servicio', component: ServicioComponent}
+  {path: 'page-servicio', component: ServicioComponent},
+  {path: 'page-cliente', component: ClienteComponent}
 ];
 
 @NgModule({

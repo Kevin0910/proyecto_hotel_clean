@@ -9,6 +9,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import { ServicioComponent } from './components/servicio/servicio.component';
 import { PersonalComponent } from './components/personal/personal.component';
+import { ClienteComponent } from './components/cliente/cliente.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PersonalComponent } from './components/personal/personal.component';
     HeaderComponent,
     ProductoComponent,
     ServicioComponent,
-    PersonalComponent
+    PersonalComponent,
+    ClienteComponent
   ],
   imports: [
     BrowserModule,
