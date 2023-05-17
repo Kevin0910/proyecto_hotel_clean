@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -10,6 +11,7 @@ import { ProductoComponent } from './components/producto/producto.component';
 import { ServicioComponent } from './components/servicio/servicio.component';
 import { PersonalComponent } from './components/personal/personal.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { ClienteComponent } from './components/cliente/cliente.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

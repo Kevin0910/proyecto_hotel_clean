@@ -1,14 +1,70 @@
-<div class="card text-bg-primary mb-1 " style="max-width: 69rem;">
-  <div class="card-header">Seccion de productos</div>
-  <div class="card-body">
-    <h5 class="card-title">Productos</h5>
-    <select class="form-select" aria-label="Disabled select example">
-      <option selected>Open this select menu</option>
-      <option value="1">One</option>
-      <option value="2">Two</option>
-      <option value="3">Three</option>
-    </select>
+<div>
+  <div class="card color-bg-card mb-3" style="max-width: 70rem;">
+    <div class="card-header text-black">Seccion de productos</div>
+    <div class="card-body">
+      <h5 class="card-title text-black">Productos</h5>
+
+      <!-- Este va ser un selector con la etiqueta select con sus option -->
+      <form class="row g-3">
+
+        <div class="col-md-5">
+          <label for="validationServer04" class="form-label text-black">Productos</label>
+          <select class="form-select"  required>
+            <option class="text-black" selected disabled value="">Tipo de servicio</option>
+            <option class="text-black">Limpieza</option>
+          </select>
+          <div id="validationServer04Feedback" class="invalid-feedback">
+            Please select a valid state.
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <label for="validationServer03" class="form-label text-black">Cantidad</label>
+          <input type="text" class="form-control" id="validationServer03" placeholder="Ingrege la cantidad" required>
+          <div id="validationServer04Feedback" class="invalid-feedback">
+            Please select a valid state.
+          </div>
+        </div>
 
 
+        <div class="col-md-12">
+          <label for="validationServer03" class="form-label text-black">Descripción del producto</label>
+          <input type="text" class="form-control" id="validationServer03"  required>
+        </div>
+
+        <!-- Aqui un buscador de proveedor   -->
+        <div class="col-md-5">
+          <label for="validationServer04" class="form-label text-black">Nombre del proveedor</label>
+          <select class="form-select"  required>
+            <option class="text-black" selected disabled value="">Buscador empleado</option>
+            <option class="text-black">Limpieza</option>
+          </select>
+        </div>
+
+        <!-- Aqui va un buscador de habitaciones -->
+        <div class="col-md-5">
+          <label for="validationServer04" class="form-label text-black">Nombre de la compañia del producto</label>
+          <select class="form-select"  required>
+            <option class="text-black" selected disabled value="">Buscar habitacion</option>
+            <option class="text-black">Limpieza</option>
+          </select>
+        </div>
+
+        <div class="col-md-5">
+          <label for="validationServer04" class="form-label text-black">Coreo electronico</label>
+          <select class="form-select"  required>
+            <option class="text-black" selected disabled value="">Correo</option>
+            <option class="text-black">Limpieza</option>
+          </select>
+        </div>
+
+
+        <div class="col-12">
+          <button class="btn btn-success" type="submit">Submit form</button>
+        </div>
+      </form>
+
+    </div>
   </div>
+
 </div>
