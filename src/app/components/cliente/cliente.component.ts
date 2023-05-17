@@ -14,8 +14,7 @@ export class ClienteComponent {
   clientes: Cliente[];
 
 
-  constructor(private clienteService:ClienteService,
-              private habitacionService:HabitacionService){  }
+  constructor(private clienteService:ClienteService){  }
 
   ngOnInit() {
     this.clienteService.getClientes().subscribe(

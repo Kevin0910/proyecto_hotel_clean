@@ -3,39 +3,34 @@
   <div class="card-body text-primary">
     <h5 class="card-title">Tablla de personal</h5>
 
+    <div class="row-cols-3">
+      <button class="btn btn-primary col-lg-2">Crear empelado</button>
+    </div>
 
-
+    <hr>
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
           <th>ID</th>
-          <th>Nombre del personal</th>
+          <th>Nombre</th>
           <th>Apellido paterno</th>
           <th>Apellido materno</th>
           <th>Telefono</th>
           <th>Correo</th>
-          <th>Numero habitacion</th>
+          <th>Rol</th>
+          <th>Id Jefe</th>
         </tr>
       </thead>
       <tbody>
-        <tr >
-          <td>1</td>
-          <td>Kevin Gonzalo</td>
-          <td>Cruz</td>
-          <td> Martinez</td>
-          <td>23141234</td>
-          <td>manolo@gmail.com</td>
-          <td>hab1</td>
-          <!-- <td>{{cita.id}}</td>
-          <td>{{cita.cliente.id}} </td>
-          <td>{{cita.empleado.id}} </td>
-          <td>{{cita.fecha_cita | date:"EEEE dd, MMMM yyyy"}} </td> -->
-          <!-- <td>
-            <button type="button" name="button_detalle_cita" (click)="abrirModal(cita)" class=" btn btn-primary">Detalle <i class="bi-person-vcard"></i></button>
-          </td>
-          <td>
-            <button type="button" name="button_eliminar_cita" (click)="delete(cita)" class="btn btn-danger ">Eliminar</button>
-          </td> -->
+        <tr *ngFor="let personal of personales" >
+          <td>{{personal.id}}</td>
+          <td>{{personal.nombre}}</td>
+          <td>{{personal.apellido1}}</td>
+          <td>{{personal.apellido2}}</td>
+          <td>{{personal.telefono}}</td>
+          <td>{{personal.correo}}</td>
+          <td>{{personal.tipoDeEmpleado.tipoDeEmpleado}}</td>
+          <td>{{personal.jefe}}</td>
         </tr>
       </tbody>
     </table>
