@@ -9,8 +9,10 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { ProductoComponent } from './components/producto/producto.component';
 import { ServicioComponent } from './components/servicio/servicio.component';
-import { PersonalComponent } from './components/personal/personal.component';
+import { PersonalComponent } from './components/personal/pagina/personal.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
+import { FormularioPersonalComponent } from './components/personal/formulario-personal/formulario-personal.component';
+import { BoxSearchComponent } from './shared/components/box-search/box-search.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { ClienteComponent } from './components/cliente/cliente.component';
     ProductoComponent,
     ServicioComponent,
     PersonalComponent,
-    ClienteComponent
+    ClienteComponent,
+    FormularioPersonalComponent,
+    BoxSearchComponent
   ],
   imports: [
     BrowserModule,

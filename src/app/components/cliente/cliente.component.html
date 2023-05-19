@@ -1,7 +1,47 @@
 <div class="card border-primary" style="max-width: 69rem">
   <div class="card-header">Sección de clientes</div>
   <div class="card-body text-primary">
-    <h5 class="card-title">Tablla de clientes</h5>
+    <h5 class="card-title">Tabla de clientes</h5>
+
+    <div class="form-control">
+      <buscadorBox (onDebouce)="busquedaPorNombre($event)" placeholder="Busqueda de cliente"></buscadorBox>
+    </div>
+
+    <div *ngIf="clienteBusquedas.length === 0 else tablaClienteBusq">
+    </div>
+
+    <ng-template #tablaClienteBusq>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre del cliente</th>
+          <th>Apellido paterno</th>
+          <th>Apellido materno</th>
+          <th>Telefono</th>
+          <th>Correo</th>
+          <th>Piso</th>
+          <th>Habitacion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let clienteBusqueda of clienteBusquedas">
+          <td>{{ clienteBusqueda.id }}</td>
+          <td>{{ clienteBusqueda.nombre }}</td>
+          <td>{{ clienteBusqueda.apellido1 }}</td>
+          <td>{{ clienteBusqueda.apellido2 }}</td>
+          <td>{{ clienteBusqueda.telefono }}</td>
+          <td>{{ clienteBusqueda.correo }}</td>
+          <td>{{ clienteBusqueda.habitacion.piso }}</td>
+          <td>{{ clienteBusqueda.habitacion.nombre }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+  </div>
+
+
+    <hr>
 
     <table class="table table-bordered table-striped">
       <thead>
@@ -29,5 +69,4 @@
         </tr>
       </tbody>
     </table>
-  </div>
 </div>

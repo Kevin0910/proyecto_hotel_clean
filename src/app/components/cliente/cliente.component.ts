@@ -12,7 +12,7 @@ export class ClienteComponent {
 
 
   clientes: Cliente[];
-
+  clienteBusquedas: Cliente[] = [];
 
   constructor(private clienteService:ClienteService){  }
 
@@ -21,4 +21,16 @@ export class ClienteComponent {
       (clientes) => {this.clientes = clientes;}
     );
   }
+
+
+  busquedaPorNombre(termino: string): void {
+    if (termino !== '') {
+      this.clienteService.busquedaCliente(termino).subscribe(
+        clientes => this.clienteBusquedas = clientes
+      );
+    } else {
+      this.clienteBusquedas = [];
+    }
+  }
+
 }

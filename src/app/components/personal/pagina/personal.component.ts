@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Personal } from 'src/app/interfaces/personal';
-import { PersonalService } from '../../services/personal.service';
+import { PersonalService } from '../../../services/personal.service';
 
 @Component({
   selector: 'app-personal',
@@ -11,6 +11,7 @@ import { PersonalService } from '../../services/personal.service';
 export class PersonalComponent {
 
   personales: Personal[];
+  personalBusquedas: Personal[] = [];
 
   constructor(private personalService:PersonalService){}
 
@@ -18,6 +19,17 @@ export class PersonalComponent {
     this.personalService.getPersonal().subscribe(
       (personales) => {this.personales = personales;}
     )
+  }
+
+
+  busquedaPorNombreEmpleado(termino: string): void {
+    if (termino !== '') {
+      this.personalService.busquedaEmpleado(termino).subscribe(
+        personales => this.personalBusquedas = personales
+      );
+    } else {
+      this.personalBusquedas = [];
+    }
   }
 
 
