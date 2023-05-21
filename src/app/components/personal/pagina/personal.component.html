@@ -4,36 +4,34 @@
     <h5 class="card-title">Tablla de personal</h5>
 
     <div class="form-control">
-      <buscadorBox (onDebouce)="busquedaPorNombreEmpleado($event)" placeholder="Busqueda de cliente"></buscadorBox>
+      <buscadorBox (onDebouce)="busquedaPorNombreEmpleado($event)" placeholder="Busqueda del personal"></buscadorBox>
     </div>
 
-    <div *ngIf="personalBusquedas.length === 0 else tablaEmpleadoBusq">
-    </div>
+    <div *ngIf="personalBusquedas.length === 0 else tablaEmpleadoBusq"></div>
 
     <ng-template #tablaEmpleadoBusq>
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Nombre del cliente</th>
+          <th>Nombre</th>
           <th>Apellido paterno</th>
           <th>Apellido materno</th>
           <th>Telefono</th>
           <th>Correo</th>
-          <th>Piso</th>
-          <th>Habitacion</th>
+          <th>Rol</th>
+          <th>Editar</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let personalBusqueda of personalBusquedas">
-          <td>{{ personalBusquedas.id }}</td>
-          <td>{{ personalBusquedas.nombre }}</td>
-          <td>{{ personalBusquedas.apellido1 }}</td>
-          <td>{{ personalBusquedas.apellido2 }}</td>
-          <td>{{ personalBusquedas.telefono }}</td>
-          <td>{{ personalBusquedas.correo }}</td>
-          <td>{{ personalBusquedas.habitacion.piso }}</td>
-          <td>{{ personalBusquedas.habitacion.nombre }}</td>
+          <td>{{ personalBusqueda.id }}</td>
+          <td>{{ personalBusqueda.nombre }}</td>
+          <td>{{ personalBusqueda.apellido1 }}</td>
+          <td>{{ personalBusqueda.apellido2 }}</td>
+          <td>{{ personalBusqueda.telefono }}</td>
+          <td>{{ personalBusqueda.correo }}</td>
+          <td>{{ personalBusqueda.tipoDeEmpleado.tipoDeEmpleado}}</td>
+          <td><button class="btn btn-warning" [routerLink]="['/personal/formulario-personal']">Editar</button></td>
         </tr>
       </tbody>
     </table>
