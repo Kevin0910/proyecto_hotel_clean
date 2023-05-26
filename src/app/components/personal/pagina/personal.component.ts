@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Personal } from 'src/app/interfaces/personal';
+import { ObjetoPersonal } from 'src/app/interfaces/personal';
 import { PersonalService } from '../../../services/personal.service';
 
 @Component({
@@ -10,8 +10,8 @@ import { PersonalService } from '../../../services/personal.service';
 
 export class PersonalComponent {
 
-  personales: Personal[];
-  personalBusquedas: Personal[] = [];
+  personales: ObjetoPersonal[];
+  personalBusquedas: ObjetoPersonal[] = [];
 
   constructor(private personalService:PersonalService){}
 

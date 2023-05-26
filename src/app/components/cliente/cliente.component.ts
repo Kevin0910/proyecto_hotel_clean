@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ClienteService } from '../../services/cliente.service';
-import { Cliente } from '../../interfaces/cliente';
+import { ObjetoCliente } from 'src/app/interfaces/cliente';
 import { HabitacionService } from '../../services/habitacion.service';
 
 @Component({
@@ -11,8 +11,8 @@ import { HabitacionService } from '../../services/habitacion.service';
 export class ClienteComponent {
 
 
-  clientes: Cliente[];
-  clienteBusquedas: Cliente[] = [];
+  clientes: ObjetoCliente[];
+  clienteBusquedas: ObjetoCliente[] = [];
 
   constructor(private clienteService:ClienteService){  }
 

@@ -1,4 +1,4 @@
-export class HabitacionCliente {
+export class ObjetoHabitacion{
   id: number;
   piso: number;
   nombre: string;

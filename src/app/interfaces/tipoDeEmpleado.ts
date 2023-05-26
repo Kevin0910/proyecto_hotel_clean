@@ -1,5 +1,4 @@
-export class TipoDeEmpleado{
+export class ObjetoTipoDeEmpleado{
   id: number;
   tipoDeEmpleado: string;
-
 }

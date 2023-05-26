@@ -1,16 +1,23 @@
-import { Jefe } from "./jefe";
-import { TipoDeEmpleado } from "./tipoDeEmpleados";
+import { ObjetoTipoDeEmpleado } from "./tipoDeEmpleado";
 
-export class Personal {
+export class ObjetoPersonal {
   id: number;
   nombre: string;
   apellido1: string;
   apellido2: string;
   telefono: string;
   correo: string;
-  tipoDeEmpleado: TipoDeEmpleado;
+  tipoDeEmpleado: ObjetoTipoDeEmpleado;
   jefe?: Jefe;
 }
 
-
-
+export class Jefe {
+  id: number;
+  nombre: string;
+  apellido1: string;
+  apellido2: string;
+  telefono: string;
+  correo: string;
+  tipoDeEmpleado: ObjetoTipoDeEmpleado;
+  jefe?: any;
+}

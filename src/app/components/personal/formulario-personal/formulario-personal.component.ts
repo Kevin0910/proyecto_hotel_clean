@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PersonalService } from '../../../services/personal.service';
 import { ActivatedRoute } from '@angular/router';
-import { Personal } from 'src/app/interfaces/personal';
+import { ObjetoPersonal } from 'src/app/interfaces/personal';
 
 @Component({
   selector: 'app-formulario-personal',
@@ -10,7 +10,7 @@ import { Personal } from 'src/app/interfaces/personal';
 })
 export class FormularioPersonalComponent {
 
-  public personal: Personal;
+  public personal: ObjetoPersonal;
 
   constructor(private personalService:PersonalService,
               private activatedRoute: ActivatedRoute){

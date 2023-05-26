@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, catchError, throwError } from 'rxjs';
-import { Cliente } from '../interfaces/cliente';
+import { ObjetoCliente } from '../interfaces/cliente';
 import swal from 'sweetalert2';
 
 @Injectable({
@@ -19,8 +19,8 @@ export class ClienteService {
               private router: Router) { }
 
   //TODO OBTENER LISTA DE CLIENTES
-  getClientes(): Observable<Cliente[]>{
-    return this.http.get<Cliente[]>(`${this.urlEndPoint}/lista-clientes`)
+  getClientes(): Observable<ObjetoCliente[]>{
+    return this.http.get<ObjetoCliente[]>(`${this.urlEndPoint}/lista-clientes`)
   }
 
   //TODO OBTENER CLIENTE MEDIANTE ID
@@ -36,8 +36,8 @@ export class ClienteService {
   }
 
   //TODO OBTENER CLIENTE MEDIANTE BUSCADOR
-  busquedaCliente(termino: string): Observable<Cliente[] | null>{
-    return this.http.get<Cliente[]>(`${this.urlEndPoint}/cliente-busqueda/${termino}`)
+  busquedaCliente(termino: string): Observable<ObjetoCliente[] | null>{
+    return this.http.get<ObjetoCliente[]>(`${this.urlEndPoint}/cliente-busqueda/${termino}`)
           .pipe(
             catchError(e => {
               console.log(e)

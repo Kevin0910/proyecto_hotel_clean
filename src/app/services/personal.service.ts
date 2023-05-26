@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { Observable, throwError } from 'rxjs';
 
-import { Personal } from '../interfaces/personal';
+import { ObjetoPersonal } from '../interfaces/personal';
 
 import swal from 'sweetalert2';
 
@@ -20,19 +20,19 @@ export class PersonalService {
   constructor(private http: HttpClient,
               private router: Router) { }
 
-  getPersonal(): Observable<Personal[]>{
-    return this.http.get<Personal[]>(`${this.urlEndPoint}/lista-empleados`)
+  getPersonal(): Observable<ObjetoPersonal[]>{
+    return this.http.get<ObjetoPersonal[]>(`${this.urlEndPoint}/lista-empleados`)
   }
 
-  create(personal: Personal): Observable<any>{
+  create(personal: ObjetoPersonal): Observable<any>{
     return this.http.post<any>(`${this.urlEndPoint}/crear-empleado`, personal, {headers:this.HttpHeaders}).pipe(
     );
   }
 
 
   //TODO OBTENER CLIENTE MEDIANTE BUSCADOR
-  busquedaEmpleado(termino: string): Observable<Personal[] | null>{
-    return this.http.get<Personal[]>(`${this.urlEndPoint}/empleado-busqueda/${termino}`)
+  busquedaEmpleado(termino: string): Observable<ObjetoPersonal[] | null>{
+    return this.http.get<ObjetoPersonal[]>(`${this.urlEndPoint}/empleado-busqueda/${termino}`)
           .pipe(
             catchError(e => {
               console.log(e)
