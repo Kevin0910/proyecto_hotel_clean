@@ -7,15 +7,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { BoxSearchComponent } from './shared/components/box-search/box-search.component';
+
 import { ProductoComponent } from './components/producto/producto.component';
-import { ServicioComponent } from './components/servicio/servicio.component';
 import { PersonalComponent } from './components/personal/pagina/personal.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
-import { FormularioPersonalComponent } from './components/personal/formulario-personal/formulario-personal.component';
-import { BoxSearchComponent } from './shared/components/box-search/box-search.component';
 import { MonitoreoComponent } from './components/monitoreo/pagina/monitoreo.component';
 import { ReporteComponent } from './components/reporte/pagina/reporte.component';
 import { ProveedorComponent } from './components/proveedor/pagina/proveedor.component';
+import { ServicioComponent } from './components/servicio/pagina/servicio.component';
+
+import { FormularioServicioComponent } from './components/servicio/formulario/formulario-servicio.component';
+import { FormularioPersonalComponent } from './components/personal/formulario-personal/formulario-personal.component';
 
 
 @NgModule({
@@ -23,15 +26,18 @@ import { ProveedorComponent } from './components/proveedor/pagina/proveedor.comp
     AppComponent,
     NavbarComponent,
     HeaderComponent,
+    BoxSearchComponent,
+
     ProductoComponent,
     ServicioComponent,
     PersonalComponent,
     ClienteComponent,
-    FormularioPersonalComponent,
-    BoxSearchComponent,
     MonitoreoComponent,
     ReporteComponent,
-    ProveedorComponent
+    ProveedorComponent,
+
+    FormularioPersonalComponent,
+    FormularioServicioComponent
   ],
   imports: [
     BrowserModule,
