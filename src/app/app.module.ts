@@ -13,6 +13,9 @@ import { PersonalComponent } from './components/personal/pagina/personal.compone
 import { ClienteComponent } from './components/cliente/cliente.component';
 import { FormularioPersonalComponent } from './components/personal/formulario-personal/formulario-personal.component';
 import { BoxSearchComponent } from './shared/components/box-search/box-search.component';
+import { MonitoreoComponent } from './components/monitoreo/pagina/monitoreo.component';
+import { ReporteComponent } from './components/reporte/pagina/reporte.component';
+import { ProveedorComponent } from './components/proveedor/pagina/proveedor.component';
 
 
 @NgModule({
@@ -25,7 +28,10 @@ import { BoxSearchComponent } from './shared/components/box-search/box-search.co
     PersonalComponent,
     ClienteComponent,
     FormularioPersonalComponent,
-    BoxSearchComponent
+    BoxSearchComponent,
+    MonitoreoComponent,
+    ReporteComponent,
+    ProveedorComponent
   ],
   imports: [
     BrowserModule,
