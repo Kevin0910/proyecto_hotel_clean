@@ -9,7 +9,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { BoxSearchComponent } from './shared/components/box-search/box-search.component';
 
-import { ProductoComponent } from './components/producto/producto.component';
+import { ProductoComponent } from './components/producto/pagina/producto.component';
 import { PersonalComponent } from './components/personal/pagina/personal.component';
 import { ClienteComponent } from './components/cliente/cliente.component';
 import { MonitoreoComponent } from './components/monitoreo/pagina/monitoreo.component';
@@ -19,6 +19,7 @@ import { ServicioComponent } from './components/servicio/pagina/servicio.compone
 
 import { FormularioServicioComponent } from './components/servicio/formulario/formulario-servicio.component';
 import { FormularioPersonalComponent } from './components/personal/formulario-personal/formulario-personal.component';
+import { FormularioProductoComponent } from './components/producto/formulario/formulario-producto.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { FormularioPersonalComponent } from './components/personal/formulario-pe
     ProveedorComponent,
 
     FormularioPersonalComponent,
-    FormularioServicioComponent
+    FormularioServicioComponent,
+    FormularioProductoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,56 @@
+<div class="card border-primary" style="max-width: 69rem">
+  <div class="card-header">Sección de productos</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Lista de productos</h5>
+
+    <div class="form-control">
+      <buscadorBox (onDebouce)="busquedaPorNombre($event)" placeholder="Busqueda de producto"></buscadorBox>
+    </div>
+
+    <div *ngIf="productoBusquedas.length === 0 else tablaProductoBusq">
+    </div>
+
+    <ng-template #tablaProductoBusq>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre del producto</th>
+          <th>Descripción</th>
+          <th>Nombre del proveedor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let productoBusqueda of productoBusquedas">
+          <td> {{ productoBusqueda.id }} </td>
+          <td> {{ productoBusqueda.nombre }} </td>
+          <td> {{ productoBusqueda.descripcion }} </td>
+          <td> {{ productoBusqueda.proveedor.nombre }} </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+  </div>
+
+
+    <hr>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre del producto</th>
+          <th>Descripción</th>
+          <th>Nombre del proveedor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let producto of productos">
+          <td> {{ producto.id }} </td>
+          <td> {{ producto.nombre }} </td>
+          <td> {{ producto.descripcion }} </td>
+          <td> {{ producto.proveedor.nombre }} </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
