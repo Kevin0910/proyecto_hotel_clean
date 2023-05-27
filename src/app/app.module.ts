@@ -20,6 +20,7 @@ import { ServicioComponent } from './components/servicio/pagina/servicio.compone
 import { FormularioServicioComponent } from './components/servicio/formulario/formulario-servicio.component';
 import { FormularioPersonalComponent } from './components/personal/formulario-personal/formulario-personal.component';
 import { FormularioProductoComponent } from './components/producto/formulario/formulario-producto.component';
+import { FormularioMonitoreoComponent } from './components/monitoreo/formulario-monitoreo/formulario-monitoreo.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { FormularioProductoComponent } from './components/producto/formulario/fo
 
     FormularioPersonalComponent,
     FormularioServicioComponent,
-    FormularioProductoComponent
+    FormularioProductoComponent,
+    FormularioMonitoreoComponent
   ],
   imports: [
     BrowserModule,
