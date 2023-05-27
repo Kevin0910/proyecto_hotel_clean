@@ -1,1 +1,59 @@
-<p>formulario works!</p>
+<div class="card border-primary" style="max-width: 69rem;">
+  <div class="card-header">Sección del servicio</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Tablla de servicio a realizar</h5>
+
+    <div class="form-control">
+      <buscadorBox (onDebouce)="busquedaPorNombre($event)" placeholder="Busqueda del cliente"></buscadorBox>
+    </div>
+
+    <div *ngIf="servicioARealizarBusquedas.length === 0 else tablaServARealizarBusq"></div>
+
+    <ng-template #tablaServARealizarBusq>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Folio</th>
+          <th>Servicio</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Cliente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let servicioARealizarBusqueda of servicioARealizarBusquedas">
+          <td> {{servicioARealizarBusqueda.folio}} </td>
+          <td> {{servicioARealizarBusqueda.servicio.nombre}} </td>
+          <td> {{servicioARealizarBusqueda.fecha}} </td>
+          <td> {{servicioARealizarBusqueda.hora}} </td>
+          <td> {{servicioARealizarBusqueda.cliente.nombre}} {{servicioARealizarBusqueda.cliente.apellido1}} {{servicioARealizarBusqueda.cliente.apellido2}} </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-template>
+  </div>
+
+
+    <hr>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Folio</th>
+          <th>Servicio</th>
+          <th>Fecha</th>
+          <th>Hora</th>
+          <th>Cliente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let servicioARealizar of serviciosARealizar" >
+          <td> {{servicioARealizar.folio}} </td>
+          <td> {{servicioARealizar.servicio.nombre}} </td>
+          <td> {{servicioARealizar.fecha}} </td>
+          <td> {{servicioARealizar.hora}} </td>
+          <td> {{servicioARealizar.cliente.nombre}} {{servicioARealizar.cliente.apellido1}} {{servicioARealizar.cliente.apellido2}} </td>
+        </tr>
+      </tbody>
+    </table>
+</div>

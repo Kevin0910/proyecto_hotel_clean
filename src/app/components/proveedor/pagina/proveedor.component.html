@@ -1,1 +1,57 @@
-<p>pagina proveedor!</p>
+<div class="card border-primary" style="max-width: 69rem">
+  <div class="card-header">Sección de proveedor</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Tabla de proveedores</h5>
+
+    <div class="form-control">
+      <buscadorBox
+        (onDebouce)="busquedaPorNombre($event)"
+        placeholder="Busqueda de proveedor"
+      ></buscadorBox>
+    </div>
+
+    <div *ngIf="proveedorBusquedas.length === 0; else tablaProveedorBusq"></div>
+
+    <ng-template #tablaProveedorBusq>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre del proveedor</th>
+            <th>Telefono</th>
+            <th>Correo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let proveedorBusqueda of proveedorBusquedas">
+            <td>{{ proveedorBusqueda.id }}</td>
+            <td>{{ proveedorBusqueda.nombre }}</td>
+            <td>{{ proveedorBusqueda.telefono }}</td>
+            <td>{{ proveedorBusqueda.correo }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </div>
+
+  <hr />
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre del proveedor</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let proveedor of proveedores">
+        <td>{{ proveedor.id }}</td>
+        <td>{{ proveedor.nombre }}</td>
+        <td>{{ proveedor.telefono }}</td>
+        <td>{{ proveedor.correo }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
