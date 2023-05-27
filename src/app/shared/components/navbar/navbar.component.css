@@ -3,6 +3,12 @@
   width: 24vh;
 }
 
+.posicion_fijo{
+  position: fixed;
+  width: 200px;
+
+}
+
 .mi-boton-nav:hover {
   /* background-color: rgb(101, 124, 197); */
   background: #333;
