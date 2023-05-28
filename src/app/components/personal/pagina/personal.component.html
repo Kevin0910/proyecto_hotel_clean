@@ -13,12 +13,14 @@
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
+          <th>ID</th>
           <th>Nombre</th>
           <th>Apellido paterno</th>
           <th>Apellido materno</th>
           <th>Telefono</th>
           <th>Correo</th>
           <th>Rol</th>
+          <th>Manager</th>
           <th>Editar</th>
         </tr>
       </thead>
@@ -30,6 +32,7 @@
           <td>{{ personalBusqueda.apellido2 }}</td>
           <td>{{ personalBusqueda.telefono }}</td>
           <td>{{ personalBusqueda.correo }}</td>
+          <td>{{ personalBusqueda.jefe ? personalBusqueda.jefe.id: 'Null' }}</td>
           <td>{{ personalBusqueda.tipoDeEmpleado.tipoDeEmpleado}}</td>
           <td><button class="btn btn-warning" [routerLink]="['/personal/formulario-personal']">Editar</button></td>
         </tr>
@@ -50,6 +53,7 @@
           <th>Telefono</th>
           <th>Correo</th>
           <th>Rol</th>
+          <th>Manager</th>
           <th>Editar</th>
         </tr>
       </thead>
@@ -62,6 +66,7 @@
           <td>{{personal.telefono}}</td>
           <td>{{personal.correo}}</td>
           <td>{{personal.tipoDeEmpleado.tipoDeEmpleado}}</td>
+          <td>{{personal.jefe ? personal.jefe.id: 'Null'}}</td>
           <td><button class="btn btn-warning" [routerLink]="['/personal/formulario-personal']">Editar</button></td>
         </tr>
       </tbody>
