@@ -9,6 +9,8 @@ import { MonitoreoComponent } from './components/monitoreo/pagina/monitoreo.comp
 import { ProveedorComponent } from './components/proveedor/pagina/proveedor.component';
 
 import { FormularioPersonalComponent } from './components/personal/formulario-personal/formulario-personal.component';
+import { FormularioProveedorComponent } from './components/proveedor/formulario-proveedor/formulario-proveedor.component';
+import { FormularioProductoComponent } from './components/producto/formulario/formulario-producto.component';
 
 const routes: Routes = [
   {path: '', component: PersonalComponent, pathMatch: 'full'},
@@ -19,7 +21,10 @@ const routes: Routes = [
   {path: 'page-reporte', component: ReporteComponent },
   {path: 'page-monitoreo', component: MonitoreoComponent},
   {path: 'page-proveedor', component: ProveedorComponent},
-  {path: 'personal/formulario-personal', component: FormularioPersonalComponent}
+
+  {path: 'personal/formulario-personal', component: FormularioPersonalComponent},
+  {path: 'proveedor/formulario-proveedor', component: FormularioProveedorComponent},
+  {path: 'producto/formulario-producto', component: FormularioProductoComponent}
 ];
 
 @NgModule({

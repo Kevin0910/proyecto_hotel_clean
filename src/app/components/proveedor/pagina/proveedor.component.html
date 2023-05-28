@@ -1,7 +1,12 @@
 <div class="card border-primary" style="max-width: 69rem">
   <div class="card-header">Sección de proveedor</div>
   <div class="card-body text-primary">
-    <h5 class="card-title">Tabla de proveedores</h5>
+    <h5 class="card-title">Lista de proveedores</h5>
+    
+    <div>
+        <button class="btn btn-success" type="button" [routerLink]="['/proveedor/formulario-proveedor']">Agregar proveedor</button>
+    </div>
+    <br>
 
     <div class="form-control">
       <buscadorBox

@@ -1,70 +1,57 @@
-<div>
-  <div class="card color-bg-card mb-3" style="max-width: 70rem;">
-    <div class="card-header text-black">Seccion de productos</div>
-    <div class="card-body">
-      <h5 class="card-title text-black">Productos</h5>
+<br>
+<div class="card text-bg-dark mb-3 diseño_formulario" style="max-width: 65rem;">
+  <div class="card-header">Formulario producto </div>
+  <div class="card-body">
+    <h5 class="card-title">Formulario</h5>
+    <form class="row g-3">
 
-      <!-- Este va ser un selector con la etiqueta select con sus option -->
-      <form class="row g-3">
+      <div class="col-md-7">
+        <label for="nombre" class="form-label">Nombre del producto.</label>
+        <input type="text" class="form-control" id="inputEmail4" placeholder="Ingresar nombre del producto...">
+      </div>
 
-        <div class="col-md-5">
-          <label for="validationServer04" class="form-label text-black">Productos</label>
-          <select class="form-select"  required>
-            <option class="text-black" selected disabled value="">Tipo de servicio</option>
-            <option class="text-black">Limpieza</option>
-          </select>
-          <div id="validationServer04Feedback" class="invalid-feedback">
-            Please select a valid state.
-          </div>
-        </div>
+      <div class="col-md-7">
+        <label for="producto" class="form-label">Descripción.</label>
+        <input type="text" class="form-control" id="producto" placeholder="Ingresar descripcion del producto...">
+      </div>
 
-        <div class="col-md-2">
-          <label for="validationServer03" class="form-label text-black">Cantidad</label>
-          <input type="text" class="form-control" id="validationServer03" placeholder="Ingrege la cantidad" required>
-          <div id="validationServer04Feedback" class="invalid-feedback">
-            Please select a valid state.
-          </div>
-        </div>
-
-
-        <div class="col-md-12">
-          <label for="validationServer03" class="form-label text-black">Descripción del producto</label>
-          <input type="text" class="form-control" id="validationServer03"  required>
-        </div>
-
-        <!-- Aqui un buscador de proveedor   -->
-        <div class="col-md-5">
-          <label for="validationServer04" class="form-label text-black">Nombre del proveedor</label>
-          <select class="form-select"  required>
-            <option class="text-black" selected disabled value="">Buscador empleado</option>
-            <option class="text-black">Limpieza</option>
-          </select>
-        </div>
-
-        <!-- Aqui va un buscador de habitaciones -->
-        <div class="col-md-5">
-          <label for="validationServer04" class="form-label text-black">Nombre de la compañia del producto</label>
-          <select class="form-select"  required>
-            <option class="text-black" selected disabled value="">Buscar habitacion</option>
-            <option class="text-black">Limpieza</option>
-          </select>
-        </div>
-
-        <div class="col-md-5">
-          <label for="validationServer04" class="form-label text-black">Coreo electronico</label>
-          <select class="form-select"  required>
-            <option class="text-black" selected disabled value="">Correo</option>
-            <option class="text-black">Limpieza</option>
-          </select>
-        </div>
-
-
-        <div class="col-12">
-          <button class="btn btn-success" type="submit">Submit form</button>
-        </div>
-      </form>
-
+      <!-- TODO Autocomplete con angular material -->
+      <div class="col-md-7">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre del proveedor</mat-label>
+          <input type="text"
+                 placeholder="Agregar proveedor"
+                 aria-label="Number"
+                 matInput
+                 [formControl]="autoCompletado"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let nombreDelProveedor of proveedoresFiltrados | async" [value]="nombreDelProveedor.nombre">
+              {{nombreDelProveedor.nombre}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
     </div>
-  </div>
 
+      <!--!  AUTOCOMPLETE DE PRUEBA  -->
+      <!-- <div class="col-md-7">
+        <label for="inputPassword4" class="form-label">Proveedor.</label>
+        <buscadorBox (onDebouce)="busquedaPorNombreProveedor($event)" placeholder="Escriba el proveedor...">
+        </buscadorBox> -->
+
+        <!-- <div *ngIf="proveedorBusquedas.length === 0 else listaDeProveedores"> </div>
+
+        <ng-template #listaDeProveedores>
+          <details *ngFor="let proveedorBusqueda of proveedorBusquedas" id="aaa" >
+            <option value="aaa">{{proveedorBusqueda.nombre}}</option>
+          </details>
+        </ng-template>
+      </div> -->
+
+      <div class="col-10">
+        <button class="btn btn-success col-2 m-lg-2">Editar</button>
+        <button class="btn btn-danger col-2 m-lg-2" [routerLink]="['/page-producto']">Cancelar</button>
+      </div>
+    </form>
+  </div>
 </div>

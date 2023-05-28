@@ -20,8 +20,8 @@ export class ProveedorService {
     return this.http.get<ObjetoProveedor[]>(`${this.urlEndPoint}/lista-proveedor`);
   }
 
-  busquedaProveedor(id: string): Observable<ObjetoProveedor[] | null>{
-    return this.http.get<ObjetoProveedor[]>(`${this.urlEndPoint}/proveedor-busqueda/${id}`)
+  busquedaProveedor(termino: string): Observable<ObjetoProveedor[] | null>{
+    return this.http.get<ObjetoProveedor[]>(`${this.urlEndPoint}/proveedor-busqueda/${termino}`)
           .pipe(
             catchError(e => {
               console.log(e)
