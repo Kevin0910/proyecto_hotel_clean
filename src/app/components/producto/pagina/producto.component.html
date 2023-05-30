@@ -23,6 +23,7 @@
           <th>Nombre del producto</th>
           <th>Descripción</th>
           <th>Nombre del proveedor</th>
+          <th>Modificar</th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +32,7 @@
           <td> {{ productoBusqueda.nombre }} </td>
           <td> {{ productoBusqueda.descripcion }} </td>
           <td> {{ productoBusqueda.proveedor.nombre }} </td>
+          <td> <button class="btn btn-warning" routerLink="">Modificar</button> </td>
         </tr>
       </tbody>
     </table>

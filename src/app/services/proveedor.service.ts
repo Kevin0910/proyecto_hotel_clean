@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, catchError, throwError } from 'rxjs';
 import { ObjetoProveedor } from '../interfaces/proveedor';
+import swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class ProveedorService {
     return this.http.get<ObjetoProveedor[]>(`${this.urlEndPoint}/lista-proveedor`);
   }
 
+  // TODO Busqueda por nombre
   busquedaProveedor(termino: string): Observable<ObjetoProveedor[] | null>{
     return this.http.get<ObjetoProveedor[]>(`${this.urlEndPoint}/proveedor-busqueda/${termino}`)
           .pipe(
@@ -30,5 +32,65 @@ export class ProveedorService {
           );
   }
 
+
+
+  // TODO CREAR PROVEEDOR
+  create(objetoProveedor: ObjetoProveedor): Observable<any>{
+    return this.http.post<any>(`${this.urlEndPoint}/crear-proveedor`, objetoProveedor, {headers:this.HttpHeaders}).pipe(
+      catchError(e => {
+
+        if(e.status == 400){
+          return throwError(() => e)
+        }
+
+        console.error(e.error.mensaje);
+        swal(e.error.mensaje, e.error.error, 'error');
+        return throwError(() => e)
+      })
+    );
+  }
+
+    // TODO GET PARA OBTENER CLIENTES MEDIANTE ID
+    getProveedorId(id): Observable<any>{
+      return this.http.get<any>(`${this.urlEndPoint}/buscar-proveedor-id/${id}`).pipe(
+        catchError(e => {
+          this.router.navigate(['/page-proveedor'])
+          console.error(e.error.mensaje);
+          swal(e.error.mensaje, e.error.error, 'error')
+          return throwError(() => e);
+        })
+      );
+    }
+
+
+  // ! Modificarlo
+
+   // TODO MODIFICAR CITAS
+  update(objetoProveedor: ObjetoProveedor): Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/editar-proveedor/${objetoProveedor.id}`, objetoProveedor, {headers:this.HttpHeaders}).pipe(
+        catchError(e => {
+
+          if(e.status == 400){
+            return throwError(() => e)
+          }
+
+          console.error(e.error.mensaje);
+          swal(e.error.mensaje, e.error.error, 'error');
+          return throwError(() => e)
+        })
+    );
+  }
+
+
+  // //ELIMINAR CITAS
+  // delete(id:number): Observable<any>{
+  //   return this.http.delete<any>(`${this.urlEndPoint}/${id}`, {headers:this.HttpHeaders}).pipe(
+  //     catchError(e => {
+  //       console.error(e.error.mensaje);
+  //       swal(e.error.mensaje, e.error.error, 'error');
+  //       return throwError(() => e)
+  //     })
+  //   );
+  // }
 
 }

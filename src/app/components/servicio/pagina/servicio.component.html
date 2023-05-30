@@ -3,6 +3,11 @@
   <div class="card-body text-primary">
     <h5 class="card-title">Tablla de servicio a realizar</h5>
 
+    <div>
+      <button class="btn btn-success" type="button" [routerLink]="['/servicio/formulario-servicio']">Crear servicio</button>
+    </div>
+    <br>
+
     <div class="form-control">
       <buscadorBox (onDebouce)="busquedaPorNombre($event)" placeholder="Busqueda del cliente"></buscadorBox>
     </div>

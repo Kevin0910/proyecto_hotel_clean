@@ -68,9 +68,7 @@ import { FormularioProveedorComponent } from './components/proveedor/formulario-
     MatFormFieldModule,
     MatAutocompleteModule,
     FormsModule,
-    MatFormFieldModule,
     MatInputModule,
-    MatAutocompleteModule,
     ReactiveFormsModule,
     NgFor,
     AsyncPipe

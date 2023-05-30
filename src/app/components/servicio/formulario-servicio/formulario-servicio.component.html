@@ -1,45 +1,70 @@
 <br>
 <div class="card text-bg-dark mb-3 diseño_formulario" style="max-width: 65rem;">
-  <div class="card-header">Formulario proveedor </div>
+  <div class="card-header">Formulario servicio </div>
   <div class="card-body">
-    <h5 class="card-title">Forulario</h5>
+    <h5 class="card-title">Formulario</h5>
     <form class="row g-3">
+
       <div class="col-md-7">
-        <label for="inputEmail4" class="form-label">Nombre(s)</label>
-        <input type="text" class="form-control" id="inputEmail4" placeholder="Ingresar nombre">
+        <label for="nombre" class="form-label">Nombre.</label>
+        <input type="text" class="form-control"  placeholder="Ingresar nombre...">
       </div>
-      <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Apellido paterno</label>
-        <input type="text" class="form-control" id="inputPassword4" placeholder="Ingresar apellido paterno">
+
+      <div class="col-md-7">
+        <label for="apellido_Paterno" class="form-label">Apellido paterno.</label>
+        <input type="text" class="form-control"  placeholder="Ingresar apellido paterno...">
       </div>
-      <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Telefono</label>
-        <input type="tel" class="form-control" id="inputPassword4" placeholder="Ingresar apellido materno">
+
+      <div class="col-md-7">
+        <label for="apellido_Materno" class="form-label">Apellido materno.</label>
+        <input type="text" class="form-control"  placeholder="Ingresar apellido materno...">
       </div>
-      <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Correo</label>
-        <input type="email" class="form-control" id="inputPassword4" placeholder="Ingresar correo">
+
+      <div class="col-md-7">
+        <label for="telefono" class="form-label">Telefono.</label>
+        <input type="text" class="form-control"  placeholder="Ingresar telefono...">
       </div>
-      <div class="col-md-4">
+
+      <div class="col-md-7">
+        <label for="correo" class="form-label">Correo.</label>
+        <input type="email" class="form-control"  placeholder="Ingresar correo...">
+      </div>
+
+
+
+      <!-- ! No se que sea aqui -->
+      <!-- <div class="col-md-4">
         <label for="inputState" class="form-label">Tipo de empleado</label>
         <select id="inputState" class="form-select">
           <option selected>Seleccionar rol del empelado...</option>
           <option>Manager</option>
           <option>Empleado de limpieza</option>
         </select>
-      </div>
-      <div class="col-md-4">
-        <label for="inputState" class="form-label">Jefe</label>
-        <select id="inputState" class="form-select">
-          <option selected>Seleccione el jefe...</option>
-          <option>Jefe 1</option>
-          <option>Jefe 2</option>
-          <option>Jefe 3</option>
-        </select>
-      </div>
+      </div> -->
+
+
+      <!-- TODO Autocomplete con angular material -->
+      <!-- <div class="col-md-7">
+        <mat-form-field class="example-full-width">
+          <mat-label>Nombre del proveedor</mat-label>
+          <input type="text"
+                 placeholder="Agregar proveedor"
+                 aria-label="Number"
+                 matInput
+                 [formControl]="autoCompletado"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let nombreDelProveedor of proveedoresFiltrados | async" [value]="nombreDelProveedor.nombre">
+              {{nombreDelProveedor.nombre}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+    </div> -->
+
+
       <div class="col-10">
         <button class="btn btn-success col-2 m-lg-2">Editar</button>
-        <button class="btn btn-danger col-2 m-lg-2" [routerLink]="['/page-proveedor']">Cancelar</button>
+        <button class="btn btn-danger col-2 m-lg-2" [routerLink]="['/page-servicio']">Cancelar</button>
       </div>
     </form>
   </div>

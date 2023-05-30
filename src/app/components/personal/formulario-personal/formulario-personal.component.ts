@@ -18,17 +18,19 @@ export class FormularioPersonalComponent {
   }
 
   ngOnInit(){
-    this.cargarPersonalId();
+    // this.cargarPersonalId();
   }
 
 
-  cargarPersonalId(): void{
-    this.activatedRoute.params.subscribe(params => {
-      let id = params['id']
-      if(id){
-        this.personalService.getPersonalId(id).subscribe(
-          (personal) => this.personal = personal)
-      }
-    })
-  }
+  // cargarPersonalId(): void{
+  //   this.activatedRoute.params.subscribe(params => {
+  //     let id = params['id']
+  //     if(id){
+  //       this.personalService.getPersonalId(id).subscribe(
+  //         (personal) => this.personal = personal)
+  //     }
+  //   })
+  // }
+
+  
 }

@@ -3,24 +3,47 @@
   <div class="card-header">Formulario proveedor </div>
   <div class="card-body">
     <h5 class="card-title">Forulario</h5>
+
+
     <form class="row g-3">
       <div class="col-md-7">
-        <label for="inputEmail4" class="form-label">Nombre del proveedor.</label>
-        <input type="text" class="form-control" id="inputEmail4" placeholder="Ingresar nombre del proveedor...">
-      </div>
-      <div class="col-md-7">
-        <label for="inputPassword4" class="form-label">Telefono del proveedor.</label>
-        <input type="text" class="form-control" id="inputPassword4" placeholder="Ingresar telefono del proveedor...">
-      </div>
-      <div class="col-md-7">
-        <label for="inputPassword4" class="form-label">Correo del proveedor.</label>
-        <input type="tel" class="form-control" id="inputPassword4" placeholder="Ingresar el correo del proveedor...">
+        <label for="nombre" class="form-label">Nombre del proveedor.</label>
+        <input type="text" class="form-control" placeholder="Ingresar nombre del proveedor..." [(ngModel)] = "proveedor.nombre" name="nombre">
       </div>
 
-      <div class="col-10">
-        <button class="btn btn-success col-2 m-lg-2">Editar</button>
-        <button class="btn btn-danger col-2 m-lg-2" [routerLink]="['/page-proveedor']">Cancelar</button>
+      <div class="col-md-7">
+        <label for="telefono" class="form-label">Telefono del proveedor.</label>
+        <input type="tel" class="form-control" placeholder="Ingresar telefono del proveedor..." [(ngModel)] = 'proveedor.telefono' name="telefono" >
       </div>
+
+      <div class="col-md-7">
+        <label for="inputPassword4" class="form-label">Correo del proveedor.</label>
+        <input type="email" class="form-control" placeholder="Ingresar el correo del proveedor..." [(ngModel)] = 'proveedor.correo' name="correo">
+      </div>
+
+        <br>
+
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <button class="btn btn-primary" role="button" (click)="create()">Crear</button>
+            <button class="btn btn-warning" role="button" routerLink="/page-proveedor">Cancelar</button>
+          </div>
+        </div>
+
+
+
+        <!-- <div >
+              <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!proveedor.id else elseBlock">Crear<i class="bi bi-plus-circle"></i></button>
+              <ng-template #elseBlock>
+              <button class="btn btn-primary" role="button" (click)="update()">Editar <i class="bi bi-plus-circle"></i></button>
+            </ng-template>
+            <div class="col-sm-3">
+              <button  class="btn btn-danger" role="button" routerLink="/page-proveedor">Cancelar <i class="bi bi-x-circle"></i> </button>
+          </div>
+        </div> -->
+
+
+
     </form>
   </div>
 </div>

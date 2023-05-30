@@ -11,6 +11,7 @@ import { ProveedorComponent } from './components/proveedor/pagina/proveedor.comp
 import { FormularioPersonalComponent } from './components/personal/formulario-personal/formulario-personal.component';
 import { FormularioProveedorComponent } from './components/proveedor/formulario-proveedor/formulario-proveedor.component';
 import { FormularioProductoComponent } from './components/producto/formulario/formulario-producto.component';
+import { FormularioServicioComponent } from './components/servicio/formulario-servicio/formulario-servicio.component';
 
 const routes: Routes = [
   {path: '', component: PersonalComponent, pathMatch: 'full'},
@@ -24,7 +25,9 @@ const routes: Routes = [
 
   {path: 'personal/formulario-personal', component: FormularioPersonalComponent},
   {path: 'proveedor/formulario-proveedor', component: FormularioProveedorComponent},
-  {path: 'producto/formulario-producto', component: FormularioProductoComponent}
+  {path: 'producto/formulario-producto', component: FormularioProductoComponent},
+  {path: 'servicio/formulario-servicio', component: FormularioServicioComponent},
+  {path: 'proveedor/formulario-proveedor/:id', component: FormularioProveedorComponent}
 ];
 
 @NgModule({
