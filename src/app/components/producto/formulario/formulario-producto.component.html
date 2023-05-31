@@ -15,8 +15,18 @@
           <input type="tel" class="form-control" placeholder="Ingresar descripcion del proveedor..." [(ngModel)] = 'producto.descripcion' name="descripcion" >
         </div>
 
-      <!-- TODO Autocomplete con angular material -->
-      <div class="col-md-7">
+
+        <div class="col-md-7">
+          <label for="listaProveedores" class="col-form-label ">Lista de proveedores <i class="bi bi-briefcase"></i></label>
+            <div class="col-sm-6">
+              <select [compareWith]="compararProveedores" class="form-control" [(ngModel)]="producto.proveedor" name="listaProveedor">
+                <option *ngFor="let listaProveedor of listaProveedores" [ngValue]="listaProveedor"> {{listaProveedor.id}}.- {{listaProveedor.nombre}} </option>
+              </select>
+            </div>
+        </div>
+
+      <!-- TODO Autocomplete con angular material No compleata -->
+      <!-- <div class="col-md-7">
         <label class="form-label">Nombre del proveedor</label>
 
         <br>
@@ -33,16 +43,14 @@
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
-    </div>
+    </div> -->
 
       <br>
 
-        <div class="form-group row">
-          <div class="col-sm-6">
-            <button class="btn btn-success" role="boton-crear" (click)="create()">Agregar</button>
-            <button class="btn btn-warning" role="boton-cancelar" routerLink="/page-producto">Cancelar</button>
+          <div class="col-sm-10">
+            <button class="btn btn-success col-2 m-lg-2" role="boton-crear" (click)="create()">Agregar</button>
+            <button class="btn btn-warning col-2 m-lg-2" role="boton-cancelar" routerLink="/page-producto">Cancelar</button>
           </div>
-        </div>
 
     </form>
   </div>

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, flatMap, map, startWith } from 'rxjs';
+
 import { ObjetoProveedor } from 'src/app/interfaces/proveedor';
 import { ProveedorService } from 'src/app/services/proveedor.service';
-import { FormControl } from '@angular/forms';
-import { Observable, flatMap, map, startWith } from 'rxjs';
 import { ObjetoProducto } from 'src/app/interfaces/producto';
-import { ActivatedRoute, Router } from '@angular/router';
 import { ProductoService } from '../../../services/producto.service';
 import swal from 'sweetalert2';
 
@@ -16,8 +17,9 @@ import swal from 'sweetalert2';
 
 export class FormularioProductoComponent {
 
-  proveedores: ObjetoProveedor[];
-  proveedorBusquedas: ObjetoProveedor[] = [];
+  public proveedores: ObjetoProveedor = new ObjetoProveedor();
+  public listaProveedores: ObjetoProveedor[]
+  public proveedorBusquedas: ObjetoProveedor[] = [];
 
   autoCompletado = new FormControl('');
   proveedoresFiltrados: Observable<ObjetoProveedor[]>;
@@ -39,6 +41,8 @@ export class FormularioProductoComponent {
     );
 
     this.cargarProducto();
+
+    this.proveedorService.getProveedor().subscribe(listaProveedores => this.listaProveedores = listaProveedores)
   }
 
 
@@ -94,6 +98,9 @@ update():void{
     // }
   );
 }
+    compararProveedores(o1: ObjetoProveedor, o2:ObjetoProveedor):boolean{
+      return o1 && o2 ? o1.id === o2.id : o1 === o2;
+    }
 }
 
 

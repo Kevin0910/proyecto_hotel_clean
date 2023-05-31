@@ -40,20 +40,18 @@
 
       <br />
 
-      <div class="form-group row">
-        <div class="col-sm-6">
-          <button class="btn btn-primary" role="button" (click)="create()">
+        <div class="col-10">
+          <button class="btn btn-primary col-2 m-lg-2" role="button" (click)="create()">
             Crear
           </button>
           <button
-            class="btn btn-warning"
+            class="btn btn-warning col-2 m-lg-2"
             role="button"
             routerLink="/page-proveedor"
           >
             Cancelar
           </button>
         </div>
-      </div>
 
       <!-- <div >
               <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!proveedor.id else elseBlock">Crear<i class="bi bi-plus-circle"></i></button>

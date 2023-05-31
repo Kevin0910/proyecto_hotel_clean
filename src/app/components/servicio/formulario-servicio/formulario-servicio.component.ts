@@ -55,9 +55,9 @@ export class FormularioServicioComponent {
     create(): void{
       console.log(this.serviciosARealizar);
       this.pageServicioService.create(this.serviciosARealizar).subscribe(
-      producto => {
+      cliente => {
         this.router.navigate(['/page-servicio'])
-        swal('Producto Guardado', `El producto ${producto.nombre} se a guardado con exito`, 'success')
+        swal('Producto Guardado', `El cliente ${cliente.nombre} ${cliente.apellido1} se a guardado con exito`, 'success')
       }
     )
   }

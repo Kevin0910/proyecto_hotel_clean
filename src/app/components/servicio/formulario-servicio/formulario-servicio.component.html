@@ -2,22 +2,22 @@
 <div class="card text-bg-dark mb-3 diseño_formulario" style="max-width: 65rem;">
   <div class="card-header">Formulario servicio </div>
   <div class="card-body">
-    <h5 class="card-title">Formulario</h5>
+    <h1 class="card-title">Formulario</h1>
     <form class="row g-3">
-
+<!-- ** Listo -->
       <div class="col-md-7">
         <label for="fecha" class="form-label">Fecha.</label>
         <input type="date" class="form-control"  placeholder="Ingrese la fecha..." [(ngModel)] = "serviciosARealizar.fecha" name="fecha">
       </div>
-
+<!-- ** Listo -->
       <div class="col-md-7">
         <label for="hora" class="form-label">Hora.</label>
         <input type="time" class="form-control"  placeholder="Ingresar hora..." [(ngModel)] = "serviciosARealizar.hora" name="hora">
       </div>
 
-
+<!-- ** Listo -->
       <div class="col-md-7">
-        <label for="listaCliente" class="col-form-label col-sm-2">Cliente <i class="bi bi-briefcase"></i></label>
+        <label for="listaCliente" class="col-form-label ">Nombre del cliente <i class="bi bi-briefcase"></i></label>
           <div class="col-sm-6">
             <select [compareWith]="compararClientes" class="form-control" [(ngModel)]="serviciosARealizar.cliente" name="listaCliente">
               <option *ngFor="let listaCliente of listaClientes" [ngValue]="listaCliente"> {{listaCliente.id}}.- {{listaCliente.nombre}} </option>
@@ -25,29 +25,27 @@
           </div>
       </div>
 
-      <!-- <br>
-      <div>
-        <label for="nom">Nombre del cliente</label>
-      </div>
-       -->
+
+      <!-- TODO Falta mejorar o no hace bien su funcion -->
       <!-- <div>
         <mat-form-field class="example-full-width">
-          <mat-label for="proveedor">Nombre del cliente</mat-label>
+          <mat-label for="clienteFiltrado">Nombre del cliente</mat-label>
           <input type="text"
                  placeholder="Agregar cliente"
                  matInput
                  [formControl]="autoCompletado"
-                 [matAutocomplete]="auto" [(ngModel)] = 'cliente.nombre'  name="cliente">
+                 [matAutocomplete]="auto" [(ngModel)] = 'serviciosARealizar.cliente'  name="clienteFiltrado">
           <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let nombreDelCliente of clientesFiltrados | async" [value]="nombreDelCliente.nombre">
-              {{nombreDelCliente.id}}.- {{nombreDelCliente.nombre}} {{nombreDelCliente.apellido1}} {{nombreDelCliente.apellido2}}
+            <mat-option *ngFor="let clienteFiltrado of clientesFiltrados | async" [value]="clienteFiltrado.nombre">
+              {{clienteFiltrado.id}}.- {{clienteFiltrado.nombre}} {{clienteFiltrado.apellido1}} {{clienteFiltrado.apellido2}}
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
     </div> -->
 
+    <!-- ** Listo -->
       <div class="col-md-7">
-        <label for="tipoDeServicio" class="col-form-label col-sm-2">Tipo de servicio <i class="bi bi-briefcase"></i></label>
+        <label for="tipoDeServicio" class="col-form-label ">Tipo de servicio <i class="bi bi-briefcase"></i></label>
           <div class="col-sm-6">
             <select [compareWith]="compararTipoServicios" class="form-control" [(ngModel)]="serviciosARealizar.servicio" name="tipoDeServicio">
               <option *ngFor="let tipoDeServicio of tipoDeServicios" [ngValue]="tipoDeServicio"> {{tipoDeServicio.id}}.- {{tipoDeServicio.nombre}} </option>
@@ -90,6 +88,7 @@
         <button class="btn btn-success col-2 m-lg-2" (click)="create()">Guardar</button>
         <button class="btn btn-danger col-2 m-lg-2" [routerLink]="['/page-servicio']">Cancelar</button>
       </div>
+      
     </form>
   </div>
 </div>
