@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, catchError, throwError } from 'rxjs';
 import { ObjetoServicio } from '../interfaces/servicio';
 import { ObjetoServicioARealizar } from '../interfaces/servicioARealizar';
+import swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +12,18 @@ import { ObjetoServicioARealizar } from '../interfaces/servicioARealizar';
 export class PageServicioService {
 
   private urlEndPoint: string = 'http://localhost:8080/api-servicio-a-realizar';
+  private urlEndPointListaServicio: string = 'http://localhost:8080/api-servicio';
+  
+
   private HttpHeaders = new HttpHeaders ({'Content-Type': 'application/json'})
 
   constructor(private http: HttpClient,
               private router: Router) { }
+
+  getListaServicio(): Observable<ObjetoServicio[]>{
+    return this.http.get<ObjetoServicio[]>(`${this.urlEndPointListaServicio}/lista-servicios`)
+  }
+
 
   getServicios(): Observable<ObjetoServicioARealizar[]>{
     return this.http.get<ObjetoServicioARealizar[]>(`${this.urlEndPoint}/lista-servicio-a-realizar`)
@@ -31,21 +40,21 @@ export class PageServicioService {
   }
 
 // ! Modificarlo
-  // //CREAR CITAS
-  // create(cita: Cita): Observable<any>{
-  //   return this.http.post<any>(this.urlEndPoint, cita, {headers:this.HttpHeaders}).pipe(
-  //     catchError(e => {
+  //CREAR
+  create(objetoServicioARealizar: ObjetoServicioARealizar): Observable<any>{
+    return this.http.post<any>(`${this.urlEndPoint}/crear-servicio`, objetoServicioARealizar, {headers:this.HttpHeaders}).pipe(
+      catchError(e => {
 
-  //       if(e.status == 400){
-  //         return throwError(() => e)
-  //       }
+        if(e.status == 400){
+          return throwError(() => e)
+        }
 
-  //       console.error(e.error.mensaje);
-  //       swal(e.error.mensaje, e.error.error, 'error');
-  //       return throwError(() => e)
-  //     })
-  //   );
-  // }
+        console.error(e.error.mensaje);
+        swal(e.error.mensaje, e.error.error, 'error');
+        return throwError(() => e)
+      })
+    );
+  }
 
   // //OBTENER CITAS
   // getCita(id): Observable<any>{

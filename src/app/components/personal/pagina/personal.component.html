@@ -34,7 +34,7 @@
           <td>{{ personalBusqueda.correo }}</td>
           <td>{{ personalBusqueda.jefe ? personalBusqueda.jefe.id: 'Null' }}</td>
           <td>{{ personalBusqueda.tipoDeEmpleado.tipoDeEmpleado}}</td>
-          <td><button class="btn btn-warning" [routerLink]="['/personal/formulario-personal']">Editar</button></td>
+          <td><button class="btn btn-warning" [routerLink]="['/personal/formulario-personal', personal.id]">Editar</button></td>
         </tr>
       </tbody>
     </table>

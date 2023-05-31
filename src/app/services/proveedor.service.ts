@@ -34,7 +34,7 @@ export class ProveedorService {
 
 
 
-  // TODO CREAR PROVEEDOR
+  // ! CREAR PROVEEDOR
   create(objetoProveedor: ObjetoProveedor): Observable<any>{
     return this.http.post<any>(`${this.urlEndPoint}/crear-proveedor`, objetoProveedor, {headers:this.HttpHeaders}).pipe(
       catchError(e => {
@@ -50,7 +50,7 @@ export class ProveedorService {
     );
   }
 
-    // TODO GET PARA OBTENER CLIENTES MEDIANTE ID
+    // ! GET PARA OBTENER CLIENTES MEDIANTE ID
     getProveedorId(id): Observable<any>{
       return this.http.get<any>(`${this.urlEndPoint}/buscar-proveedor-id/${id}`).pipe(
         catchError(e => {
@@ -65,7 +65,7 @@ export class ProveedorService {
 
   // ! Modificarlo
 
-   // TODO MODIFICAR CITAS
+   // TODO MODIFICAR
   update(objetoProveedor: ObjetoProveedor): Observable<any>{
     return this.http.put<any>(`${this.urlEndPoint}/editar-proveedor/${objetoProveedor.id}`, objetoProveedor, {headers:this.HttpHeaders}).pipe(
         catchError(e => {

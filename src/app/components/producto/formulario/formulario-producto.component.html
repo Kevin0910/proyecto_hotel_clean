@@ -3,17 +3,17 @@
   <div class="card-header">Formulario producto </div>
   <div class="card-body">
     <h5 class="card-title">Formulario</h5>
-    <form class="row g-3">
+      <form class="row g-3">
 
-      <div class="col-md-7">
-        <label for="nombre" class="form-label">Nombre del producto.</label>
-        <input type="text" class="form-control" id="inputEmail4" placeholder="Ingresar nombre del producto...">
-      </div>
+        <div class="col-md-7">
+          <label for="nombre" class="form-label">Nombre del producto.</label>
+          <input type="text" class="form-control" placeholder="Ingresar nombre del proveedor..." [(ngModel)] = "producto.nombre" name="nombre">
+        </div>
 
-      <div class="col-md-7">
-        <label for="producto" class="form-label">Descripción.</label>
-        <input type="text" class="form-control" id="producto" placeholder="Ingresar descripcion del producto...">
-      </div>
+        <div class="col-md-7">
+          <label for="descripcion" class="form-label">Ingrese una descripcion.</label>
+          <input type="tel" class="form-control" placeholder="Ingresar descripcion del proveedor..." [(ngModel)] = 'producto.descripcion' name="descripcion" >
+        </div>
 
       <!-- TODO Autocomplete con angular material -->
       <div class="col-md-7">
@@ -21,13 +21,12 @@
 
         <br>
         <mat-form-field class="example-full-width">
-          <mat-label>Nombre del proveedor</mat-label>
+          <mat-label for="proveedor">Nombre del proveedor</mat-label>
           <input type="text"
                  placeholder="Agregar proveedor"
-                 aria-label="Number"
                  matInput
                  [formControl]="autoCompletado"
-                 [matAutocomplete]="auto">
+                 [matAutocomplete]="auto" [(ngModel)] = 'producto.proveedor' name="proveedor">
           <mat-autocomplete #auto="matAutocomplete">
             <mat-option *ngFor="let nombreDelProveedor of proveedoresFiltrados | async" [value]="nombreDelProveedor.nombre">
               {{nombreDelProveedor.nombre}}
@@ -36,25 +35,15 @@
         </mat-form-field>
     </div>
 
-      <!--!  AUTOCOMPLETE DE PRUEBA  -->
-      <!-- <div class="col-md-7">
-        <label for="inputPassword4" class="form-label">Proveedor.</label>
-        <buscadorBox (onDebouce)="busquedaPorNombreProveedor($event)" placeholder="Escriba el proveedor...">
-        </buscadorBox> -->
+      <br>
 
-        <!-- <div *ngIf="proveedorBusquedas.length === 0 else listaDeProveedores"> </div>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <button class="btn btn-success" role="boton-crear" (click)="create()">Agregar</button>
+            <button class="btn btn-warning" role="boton-cancelar" routerLink="/page-producto">Cancelar</button>
+          </div>
+        </div>
 
-        <ng-template #listaDeProveedores>
-          <details *ngFor="let proveedorBusqueda of proveedorBusquedas" id="aaa" >
-            <option value="aaa">{{proveedorBusqueda.nombre}}</option>
-          </details>
-        </ng-template>
-      </div> -->
-
-      <div class="col-10">
-        <button class="btn btn-success col-2 m-lg-2">Editar</button>
-        <button class="btn btn-danger col-2 m-lg-2" [routerLink]="['/page-producto']">Cancelar</button>
-      </div>
     </form>
   </div>
 </div>
