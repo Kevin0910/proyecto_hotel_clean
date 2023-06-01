@@ -17,11 +17,7 @@ import swal from 'sweetalert2';
 
 export class FormularioProductoComponent {
 
-<<<<<<< HEAD
-=======
-  public titulo: string = "Crear producto";
   public errores: string[];
->>>>>>> Verificaciones
   public proveedores: ObjetoProveedor = new ObjetoProveedor();
   public listaProveedores: ObjetoProveedor[]
   public proveedorBusquedas: ObjetoProveedor[] = [];
@@ -108,19 +104,9 @@ update():void{
      }
   );
 }
-<<<<<<< HEAD
     compararProveedores(o1: ObjetoProveedor, o2:ObjetoProveedor):boolean{
       return o1 && o2 ? o1.id === o2.id : o1 === o2;
     }
-=======
-
-compararProveedores(o1: ObjetoProveedor, o2:ObjetoProveedor):boolean{
-      return o1 && o2 ? o1.id === o2.id : o1 === o2;
-    }
-
-
-
->>>>>>> Verificaciones
 }
 
 

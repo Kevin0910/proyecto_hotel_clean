@@ -65,7 +65,7 @@ export class PageServicioService {
         }
 
         console.error(e.error.mensaje);
-        swal("Error al registrar el servicio ",e.error.mensaje,  'error');
+        swal("Error en el formulario, acomplete los datos faltantes ",e.error.mensaje,  'error');
         return throwError(() => e)
       })
     );

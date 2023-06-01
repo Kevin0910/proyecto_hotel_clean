@@ -36,15 +36,9 @@
 
 
         <div class="col-md-7">
-<<<<<<< HEAD
           <label for="listaProveedores" class="col-form-label ">Lista de proveedores <i class="bi bi-briefcase"></i></label>
             <div class="col-sm-6">
-              <select [compareWith]="compararProveedores" class="form-control" [(ngModel)]="producto.proveedor" name="listaProveedor">
-=======
-          <label for="listaProveedores" class="col-form-label col-sm-2">Lista de proveedores <i class="bi bi-briefcase"></i></label>
-            <div class="col-sm-6">
               <select [compareWith]="compararProveedores" class="form-control" [(ngModel)]="producto.proveedor" name="listaProveedor" required>
->>>>>>> Verificaciones
                 <option *ngFor="let listaProveedor of listaProveedores" [ngValue]="listaProveedor"> {{listaProveedor.id}}.- {{listaProveedor.nombre}} </option>
               </select>
             </div>

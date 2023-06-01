@@ -83,7 +83,12 @@ export class FormularioServicioComponent {
         serviciosARealizar => {
         this.router.navigate(['/page-servicio'])
         swal('Servicio Guardado', `El servicio del cliente ${serviciosARealizar.cliente.nombre} ${serviciosARealizar.cliente.apellido1} se a guardado con exito`, 'success')
-      }
+      },
+      err =>{
+          this.errores = err.error.errors as string[];
+          console.error('Acomplete el formulario '+ err.status);
+          console.error(err.error.errors);
+        }
    );
   }
 

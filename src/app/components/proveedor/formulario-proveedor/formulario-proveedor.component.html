@@ -8,7 +8,7 @@
     <h5 class="card-title">Formulario</h5>
 
     <form class="row g-3">
-      
+
       <div class="col-md-7">
         <label for="nombre" class="form-label">Nombre del proveedor.</label>
         <input type="text" class="form-control" placeholder="Ingresar nombre del proveedor..."
@@ -56,17 +56,6 @@
 
       <br />
 
-<<<<<<< HEAD
-        <div class="col-10">
-          <button class="btn btn-primary col-2 m-lg-2" role="button" (click)="create()">
-            Crear
-          </button>
-          <button
-            class="btn btn-warning col-2 m-lg-2"
-            role="button"
-            routerLink="/page-proveedor"
-          >
-=======
       <div class="form-group row">
         <div class="col-sm-6">
           <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!proveedor.id else elseBlock" [disabled]="!proveedorForm.form.valid">
@@ -78,15 +67,14 @@
         </div>
         <div class="col-sm-6">
           <button class="btn btn-warning" role="button" routerLink="/page-proveedor">
->>>>>>> Verificaciones
             Cancelar
             <i class="bi bi-x-circle"></i>
           </button>
         </div>
 
 
-      
-     
+
+
 
       <!-- <div >
               <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!proveedor.id else elseBlock">Crear<i class="bi bi-plus-circle"></i></button>
@@ -97,6 +85,7 @@
               <button  class="btn btn-danger" role="button" routerLink="/page-proveedor">Cancelar <i class="bi bi-x-circle"></i> </button>
           </div>
         </div> -->
+        </div>
     </form>
   </div>
 </div>
