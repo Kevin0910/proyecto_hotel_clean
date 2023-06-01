@@ -16,8 +16,11 @@ import swal from 'sweetalert2';
 
 export class FormularioProductoComponent {
 
-  proveedores: ObjetoProveedor[];
-  proveedorBusquedas: ObjetoProveedor[] = [];
+  public titulo: string = "Crear producto";
+  public errores: string[];
+  public proveedores: ObjetoProveedor = new ObjetoProveedor();
+  public listaProveedores: ObjetoProveedor[]
+  public proveedorBusquedas: ObjetoProveedor[] = [];
 
   autoCompletado = new FormControl('');
   proveedoresFiltrados: Observable<ObjetoProveedor[]>;
@@ -72,11 +75,16 @@ export class FormularioProductoComponent {
   create(): void{
     console.log(this.producto);
   this.productoService.create(this.producto).subscribe(
-    producto => {
+    jsonResponse => {
       this.router.navigate(['/page-producto'])
-      swal('Producto Guardado', `El producto ${producto.nombre} se a guardado con exito`, 'success')
+      swal('Producto Guardado', `El producto ${jsonResponse.producto.id.nombre} se ha guardado con éxito`, 'success')
+    },
+    err =>{
+      this.errores = err.error.errors as string[];
+      console.error('Error: '+ err.status);
+      console.error(err.error.errors);
     }
-  )
+ );
 }
 
 
@@ -86,14 +94,21 @@ update():void{
   .subscribe (producto => {
       this.router.navigate(['/page-producto'])
       swal('Proveedor Actualizado', `El producto ${producto.nombre} se a actualizado con exito`, 'success')
-    }
-    // err =>{
-    //   this.errores = err.error.errors as string[];
-    //   console.error('Error en el codigo backend '+ err.status);
-    //   console.error(err.error.errors);
-    // }
+    },
+     err =>{
+       this.errores = err.error.errors as string[];
+       console.error('Error: '+ err.status);
+       console.error(err.error.errors);
+     }
   );
 }
+
+compararProveedores(o1: ObjetoProveedor, o2:ObjetoProveedor):boolean{
+      return o1 && o2 ? o1.id === o2.id : o1 === o2;
+    }
+
+
+
 }
 
 

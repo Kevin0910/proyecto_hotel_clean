@@ -13,7 +13,6 @@ export class PageServicioService {
 
   private urlEndPoint: string = 'http://localhost:8080/api-servicio-a-realizar';
   private urlEndPointListaServicio: string = 'http://localhost:8080/api-servicio';
-  
 
   private HttpHeaders = new HttpHeaders ({'Content-Type': 'application/json'})
 
@@ -23,7 +22,6 @@ export class PageServicioService {
   getListaServicio(): Observable<ObjetoServicio[]>{
     return this.http.get<ObjetoServicio[]>(`${this.urlEndPointListaServicio}/lista-servicios`)
   }
-
 
   getServicios(): Observable<ObjetoServicioARealizar[]>{
     return this.http.get<ObjetoServicioARealizar[]>(`${this.urlEndPoint}/lista-servicio-a-realizar`)
@@ -39,7 +37,6 @@ export class PageServicioService {
           );
   }
 
-// ! Modificarlo
   //CREAR
   create(objetoServicioARealizar: ObjetoServicioARealizar): Observable<any>{
     return this.http.post<any>(`${this.urlEndPoint}/crear-servicio`, objetoServicioARealizar, {headers:this.HttpHeaders}).pipe(
@@ -50,23 +47,22 @@ export class PageServicioService {
         }
 
         console.error(e.error.mensaje);
-        swal(e.error.mensaje, e.error.error, 'error');
+        swal("Error al registrar el servicio ",e.error.mensaje,  'error');
         return throwError(() => e)
       })
     );
   }
 
-  // //OBTENER CITAS
-  // getCita(id): Observable<any>{
-  //   return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
-  //     catchError(e => {
-  //       this.router.navigate(['/citas']);
-  //       console.error(e.error.mensaje);
-  //       swal('Error al editar', e.error.mensaje, 'error');
-  //       return throwError(()=>e)
-  //     })
-  //   );
-  // }
+  getServicioARealizarFolio(folio): Observable<any>{
+     return this.http.get<any>(`${this.urlEndPoint}/${folio}`).pipe(
+       catchError(e => {
+         this.router.navigate(['/page-servicio']);
+         console.error(e.error.mensaje);
+         swal('Error al registrar', e.error.mensaje, 'error');
+         return throwError(()=>e)
+       })
+     );
+   }
 
   // //MODIFICAR CITAS
   // update(cita: Cita): Observable<any>{

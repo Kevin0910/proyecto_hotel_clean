@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, catchError, throwError } from 'rxjs';
+import { map,Observable, catchError, throwError } from 'rxjs';
 import { ObjetoProveedor } from '../interfaces/proveedor';
 import swal from 'sweetalert2';
+
 
 @Injectable({
   providedIn: 'root'
@@ -44,19 +45,19 @@ export class ProveedorService {
         }
 
         console.error(e.error.mensaje);
-        swal(e.error.mensaje, e.error.error, 'error');
+        swal("Error al crear",e.error.mensaje,'error');
         return throwError(() => e)
       })
     );
   }
 
     // ! GET PARA OBTENER CLIENTES MEDIANTE ID
-    getProveedorId(id): Observable<any>{
-      return this.http.get<any>(`${this.urlEndPoint}/buscar-proveedor-id/${id}`).pipe(
+    getProveedorId(id): Observable<ObjetoProveedor>{
+      return this.http.get<ObjetoProveedor>(`${this.urlEndPoint}/buscar-proveedor-id/${id}`).pipe(
         catchError(e => {
           this.router.navigate(['/page-proveedor'])
           console.error(e.error.mensaje);
-          swal(e.error.mensaje, e.error.error, 'error')
+          swal("error", e.error.mensaje, 'error')
           return throwError(() => e);
         })
       );
@@ -75,7 +76,7 @@ export class ProveedorService {
           }
 
           console.error(e.error.mensaje);
-          swal(e.error.mensaje, e.error.error, 'error');
+          swal("Error al editar",e.error.mensaje, 'error');
           return throwError(() => e)
         })
     );

@@ -15,12 +15,12 @@ import swal from 'sweetalert2';
   styleUrls: ['./formulario-servicio.component.css']
 })
 export class FormularioServicioComponent {
-
+  public titulo: string = "Registrar servicio";
   public serviciosARealizar: ObjetoServicioARealizar = new ObjetoServicioARealizar();
 
   public tipoDeServicios: ObjetoServicio[];
   public listaClientes: ObjetoCliente[];
-
+  public errores: string[];
   public cliente: ObjetoCliente = new ObjetoCliente();
 
   autoCompletado = new FormControl('');
@@ -32,6 +32,7 @@ export class FormularioServicioComponent {
               private activatedRoute: ActivatedRoute){}
 
   ngOnInit() {
+    this.cargarServicios();
 
     this.clientesFiltrados = this.autoCompletado.valueChanges
     .pipe(
@@ -40,9 +41,20 @@ export class FormularioServicioComponent {
     );
 
 
+
     this.pageServicioService.getListaServicio().subscribe(tipoDeServicios => this.tipoDeServicios = tipoDeServicios );
     this.clienteService.getClientes().subscribe(listaClientes => this.listaClientes = listaClientes);
     }
+
+    
+  cargarServicios():void{
+    this.activatedRoute.params.subscribe(params => {
+      let folio = params['folio']
+      if(folio){
+        this.pageServicioService.getServicioARealizarFolio(folio).subscribe( (serviciosARealizar) => this.serviciosARealizar = serviciosARealizar);
+      }
+    })
+  }
 
     private _filter(value: string): Observable<ObjetoCliente[]> {
       const filterValue = value.toLowerCase();
@@ -50,22 +62,29 @@ export class FormularioServicioComponent {
     }
 
 
-
     //! CREAR
     create(): void{
       console.log(this.serviciosARealizar);
       this.pageServicioService.create(this.serviciosARealizar).subscribe(
-      producto => {
+      jsonResponse => {
         this.router.navigate(['/page-servicio'])
-        swal('Producto Guardado', `El producto ${producto.nombre} se a guardado con exito`, 'success')
+        swal('Servicio agendado', `El servicio ${jsonResponse.servicioARealizar.folio} se ha agendado con éxito`, 'success')
+      },
+      err =>{
+        this.errores = err.error.errors as string[];
+        console.error('Error: '+ err.status);
+        console.error(err.error.errors);
       }
-    )
+   );
   }
 
     //! MODIFICAR
 
 
 
+    fechaActual():string{
+      return new Date().toISOString().split("T")[0];
+    }
     compararTipoServicios(o1: ObjetoServicio, o2: ObjetoServicio):boolean{
       return o1 && o2 ? o1.id === o2.id : o1 === o2;
     }
