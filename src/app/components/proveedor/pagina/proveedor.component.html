@@ -34,7 +34,7 @@
             <td>{{ proveedorBusqueda.nombre }}</td>
             <td>{{ proveedorBusqueda.telefono }}</td>
             <td>{{ proveedorBusqueda.correo }}</td>
-            <td><button class="btn btn-warning" type="button" [routerLink]="['/proveedor/formulario-proveedor', proveedor.id]">Editar informacion</button></td>
+            <td><button class="btn btn-warning" type="button" [routerLink]="['/proveedor/formulario-proveedor', proveedorBusqueda.id]">Editar informacion</button></td>
           </tr>
         </tbody>
       </table>

@@ -26,8 +26,9 @@ const routes: Routes = [
   {path: 'personal/formulario-personal', component: FormularioPersonalComponent},
   {path: 'proveedor/formulario-proveedor', component: FormularioProveedorComponent},
   {path: 'producto/formulario-producto', component: FormularioProductoComponent},
-
   {path: 'servicio/formulario-servicio', component: FormularioServicioComponent},
+
+  {path: 'servicio/formulario-servicio/:folio', component: FormularioServicioComponent},
   {path: 'proveedor/formulario-proveedor/:id', component: FormularioProveedorComponent},
   {path: 'producto/formulario-producto/:id', component: FormularioProductoComponent},
   {path: 'personal/formulario-personal/:id', component: FormularioPersonalComponent}

@@ -85,10 +85,14 @@
 
 
       <div class="col-10">
-        <button class="btn btn-success col-2 m-lg-2" (click)="create()">Guardar</button>
+          <button class="btn btn-success col-2 m-lg-2" role="button" (click)='create()' *ngIf="!serviciosARealizar.folio else elseBlock"></button>
+        <ng-template #elseBlock>
+          <button class="btn btn-success col-2 m-lg-2" role="button" (click)='update()'>Editar</button>
+        </ng-template>
+
         <button class="btn btn-danger col-2 m-lg-2" [routerLink]="['/page-servicio']">Cancelar</button>
       </div>
-      
+
     </form>
   </div>
 </div>

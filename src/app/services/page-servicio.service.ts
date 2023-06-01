@@ -13,7 +13,7 @@ export class PageServicioService {
 
   private urlEndPoint: string = 'http://localhost:8080/api-servicio-a-realizar';
   private urlEndPointListaServicio: string = 'http://localhost:8080/api-servicio';
-  
+
 
   private HttpHeaders = new HttpHeaders ({'Content-Type': 'application/json'})
 
@@ -39,8 +39,7 @@ export class PageServicioService {
           );
   }
 
-// ! Modificarlo
-  //CREAR
+// ! CREAR
   create(objetoServicioARealizar: ObjetoServicioARealizar): Observable<any>{
     return this.http.post<any>(`${this.urlEndPoint}/crear-servicio`, objetoServicioARealizar, {headers:this.HttpHeaders}).pipe(
       catchError(e => {
@@ -56,44 +55,43 @@ export class PageServicioService {
     );
   }
 
-  // //OBTENER CITAS
-  // getCita(id): Observable<any>{
-  //   return this.http.get<any>(`${this.urlEndPoint}/${id}`).pipe(
-  //     catchError(e => {
-  //       this.router.navigate(['/citas']);
-  //       console.error(e.error.mensaje);
-  //       swal('Error al editar', e.error.mensaje, 'error');
-  //       return throwError(()=>e)
-  //     })
-  //   );
-  // }
+  // ! OBTENER POR ID
+  getServicioARealizar(folio): Observable<any>{
+    return this.http.get<any>(`${this.urlEndPoint}/editar-servicio/${folio}`).pipe(
+      catchError(e => {
+        this.router.navigate(['/page-servicio']);
+        console.error(e.error.mensaje);
+        swal('Error al editar', e.error.mensaje, 'error');
+        return throwError(()=>e)
+      })
+    );
+  }
 
-  // //MODIFICAR CITAS
-  // update(cita: Cita): Observable<any>{
-  //   return this.http.put<any>(`${this.urlEndPoint}/${cita.id}`, cita, {headers:this.HttpHeaders}).pipe(
-  //       catchError(e => {
+  // ! MODIFICAR
+  update(objetoServicioARealizar: ObjetoServicioARealizar): Observable<ObjetoServicioARealizar>{
+    return this.http.put<ObjetoServicioARealizar>(`${this.urlEndPoint}/editar-servicio/${objetoServicioARealizar.folio}`, objetoServicioARealizar, {headers:this.HttpHeaders}).pipe(
+        catchError(e => {
 
-  //         if(e.status == 400){
-  //           return throwError(() => e)
-  //         }
+          if(e.status == 400){
+            return throwError(() => e)
+          }
+          console.error(e.error.mensaje);
+          swal('No se pudo modificar el servicio', 'error');
+          return throwError(() => e)
+        })
+    );
+  }
 
-  //         console.error(e.error.mensaje);
-  //         swal(e.error.mensaje, e.error.error, 'error');
-  //         return throwError(() => e)
-  //       })
-  //   );
-  // }
 
-
-  // //ELIMINAR CITAS
-  // delete(id:number): Observable<any>{
-  //   return this.http.delete<any>(`${this.urlEndPoint}/${id}`, {headers:this.HttpHeaders}).pipe(
-  //     catchError(e => {
-  //       console.error(e.error.mensaje);
-  //       swal(e.error.mensaje, e.error.error, 'error');
-  //       return throwError(() => e)
-  //     })
-  //   );
-  // }
+  // ! ELIMINAR
+  delete(folio:number): Observable<any>{
+    return this.http.delete<any>(`${this.urlEndPoint}/eliminar-servicio/${folio}`, {headers:this.HttpHeaders}).pipe(
+      catchError(e => {
+        console.error(e.error.mensaje);
+        swal('No se pudo borrar el servicio', 'error');
+        return throwError(() => e)
+      })
+    );
+  }
 
 }

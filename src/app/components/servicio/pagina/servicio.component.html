@@ -9,13 +9,16 @@
     <br>
 
     <div class="form-control">
-      <buscadorBox (onDebouce)="busquedaPorNombre($event)" placeholder="Busqueda del cliente"></buscadorBox>
+      <buscadorBox (onDebouce)="busquedaPorNombreCliente($event)" placeholder="Buscar del cliente"></buscadorBox>
     </div>
 
     <div *ngIf="servicioARealizarBusquedas.length === 0 else tablaServARealizarBusq"></div>
 
     <ng-template #tablaServARealizarBusq>
-    <table class="table table-bordered table-striped">
+      <div class="row">
+        <div class="col">
+        <table class="table table-bordered table-striped">
+
       <thead>
         <tr>
           <th>Folio</th>
@@ -23,6 +26,8 @@
           <th>Fecha</th>
           <th>Hora</th>
           <th>Cliente</th>
+          <th>Modificar</th>
+          <th>Eliminar</th>
         </tr>
       </thead>
       <tbody>
@@ -32,10 +37,16 @@
           <td> {{servicioARealizarBusqueda.fecha}} </td>
           <td> {{servicioARealizarBusqueda.hora}} </td>
           <td> {{servicioARealizarBusqueda.cliente.nombre}} {{servicioARealizarBusqueda.cliente.apellido1}} {{servicioARealizarBusqueda.cliente.apellido2}} </td>
+          <td>
+            <button class="btn btn-warning" [routerLink]="['/servicio/formulario-servicio', servicioARealizarBusqueda.folio]">Editar</button>
+          </td>
+          <td> <button class="btn btn-danger" (click)=" deleteBusquedaServicioARealizar(servicioARealizarBusqueda)">Eliminar</button> </td>
         </tr>
       </tbody>
     </table>
-  </ng-template>
+  </div>
+</div>
+</ng-template>
   </div>
 
 

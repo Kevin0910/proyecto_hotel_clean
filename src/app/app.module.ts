@@ -14,11 +14,13 @@ import { MatInputModule } from '@angular/material/input';
 
 // ! Importe de las rutas
 import { AppRoutingModule } from './app-routing.module';
+
 // ! Importe de los componentes compartidos
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { BoxSearchComponent } from './shared/components/box-search/box-search.component';
+
 // ! Importe de los componentes
 import { ProductoComponent } from './components/producto/pagina/producto.component';
 import { PersonalComponent } from './components/personal/pagina/personal.component';
@@ -27,6 +29,7 @@ import { MonitoreoComponent } from './components/monitoreo/pagina/monitoreo.comp
 import { ReporteComponent } from './components/reporte/pagina/reporte.component';
 import { ProveedorComponent } from './components/proveedor/pagina/proveedor.component';
 import { ServicioComponent } from './components/servicio/pagina/servicio.component';
+
 // ! Importe de los componetes de formularios
 import { FormularioServicioComponent } from './components/servicio/formulario-servicio/formulario-servicio.component';
 import { FormularioPersonalComponent } from './components/personal/formulario-personal/formulario-personal.component';

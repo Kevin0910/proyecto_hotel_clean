@@ -55,14 +55,28 @@ export class FormularioServicioComponent {
     create(): void{
       console.log(this.serviciosARealizar);
       this.pageServicioService.create(this.serviciosARealizar).subscribe(
-      cliente => {
+      serviciosARealizar => {
         this.router.navigate(['/page-servicio'])
-        swal('Producto Guardado', `El cliente ${cliente.nombre} ${cliente.apellido1} se a guardado con exito`, 'success')
+        swal('Servicio Guardado', `El servicio del cliente ${serviciosARealizar.cliente.nombre} ${serviciosARealizar.cliente.apellido1} se a guardado con exito`, 'success')
       }
     )
   }
 
     //! MODIFICAR
+    update():void{
+      console.log(this.serviciosARealizar)
+      this.pageServicioService.update(this.serviciosARealizar)
+      .subscribe( serviciosARealizar => {
+          this.router.navigate(['/page-servicio'])
+          swal ('Servicio Guardado', `El servicio del cliente ${serviciosARealizar.cliente.nombre} ${serviciosARealizar.cliente.apellido1} se ha actualizado con exito`, 'success' )
+        }
+        // err =>{
+        //   this.errores = err.error.errors as string[];
+        //   console.error('Error en el codigo backend '+ err.status);
+        //   console.error(err.error.errors);
+        // }
+      );
+    }
 
 
 
