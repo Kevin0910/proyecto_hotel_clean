@@ -7,19 +7,19 @@
 <!-- ** Listo -->
       <div class="col-md-7">
         <label for="fecha" class="form-label">Fecha.</label>
-        <input type="date" class="form-control"  placeholder="Ingrese la fecha..." [(ngModel)] = "serviciosARealizar.fecha" name="fecha">
+        <input type="date" class="form-control"  placeholder="Ingrese la fecha..." [(ngModel)] = "servicioARealizar.fecha" name="fecha">
       </div>
 <!-- ** Listo -->
       <div class="col-md-7">
         <label for="hora" class="form-label">Hora.</label>
-        <input type="time" class="form-control"  placeholder="Ingresar hora..." [(ngModel)] = "serviciosARealizar.hora" name="hora">
+        <input type="time" class="form-control"  placeholder="Ingresar hora..." [(ngModel)] = "servicioARealizar.hora" name="hora">
       </div>
 
 <!-- ** Listo -->
       <div class="col-md-7">
         <label for="listaCliente" class="col-form-label ">Nombre del cliente <i class="bi bi-briefcase"></i></label>
           <div class="col-sm-6">
-            <select [compareWith]="compararClientes" class="form-control" [(ngModel)]="serviciosARealizar.cliente" name="listaCliente">
+            <select [compareWith]="compararClientes" class="form-control" [(ngModel)]="servicioARealizar.cliente" name="listaCliente">
               <option *ngFor="let listaCliente of listaClientes" [ngValue]="listaCliente"> {{listaCliente.id}}.- {{listaCliente.nombre}} </option>
             </select>
           </div>
@@ -34,7 +34,7 @@
                  placeholder="Agregar cliente"
                  matInput
                  [formControl]="autoCompletado"
-                 [matAutocomplete]="auto" [(ngModel)] = 'serviciosARealizar.cliente'  name="clienteFiltrado">
+                 [matAutocomplete]="auto" [(ngModel)] = 'servicioARealizar.cliente'  name="clienteFiltrado">
           <mat-autocomplete #auto="matAutocomplete">
             <mat-option *ngFor="let clienteFiltrado of clientesFiltrados | async" [value]="clienteFiltrado.nombre">
               {{clienteFiltrado.id}}.- {{clienteFiltrado.nombre}} {{clienteFiltrado.apellido1}} {{clienteFiltrado.apellido2}}
@@ -47,22 +47,13 @@
       <div class="col-md-7">
         <label for="tipoDeServicio" class="col-form-label ">Tipo de servicio <i class="bi bi-briefcase"></i></label>
           <div class="col-sm-6">
-            <select [compareWith]="compararTipoServicios" class="form-control" [(ngModel)]="serviciosARealizar.servicio" name="tipoDeServicio">
+            <select [compareWith]="compararTipoServicios" class="form-control" [(ngModel)]="servicioARealizar.servicio" name="tipoDeServicio">
               <option *ngFor="let tipoDeServicio of tipoDeServicios" [ngValue]="tipoDeServicio"> {{tipoDeServicio.id}}.- {{tipoDeServicio.nombre}} </option>
             </select>
           </div>
       </div>
 
 
-      <!-- ! No se que sea aqui -->
-      <!-- <div class="col-md-4">
-        <label for="inputState" class="form-label">Tipo de empleado</label>
-        <select id="inputState" class="form-select">
-          <option selected>Seleccionar rol del empelado...</option>
-          <option>Manager</option>
-          <option>Empleado de limpieza</option>
-        </select>
-      </div> -->
 
 
       <!-- TODO Autocomplete con angular material -->
@@ -85,11 +76,10 @@
 
 
       <div class="col-10">
-          <button class="btn btn-success col-2 m-lg-2" role="button" (click)='create()' *ngIf="!serviciosARealizar.folio else elseBlock"></button>
+          <button class="btn btn-success col-2 m-lg-2" role="button" (click)="create()" *ngIf="!servicioARealizar.folio else elseBlock"> Crear</button>
         <ng-template #elseBlock>
-          <button class="btn btn-success col-2 m-lg-2" role="button" (click)='update()'>Editar</button>
+          <button class="btn btn-success col-2 m-lg-2" role="button" (click)="update()">Editar</button>
         </ng-template>
-
         <button class="btn btn-danger col-2 m-lg-2" [routerLink]="['/page-servicio']">Cancelar</button>
       </div>
 
