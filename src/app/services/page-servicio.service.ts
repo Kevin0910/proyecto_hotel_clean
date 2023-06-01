@@ -14,7 +14,6 @@ export class PageServicioService {
   private urlEndPoint: string = 'http://localhost:8080/api-servicio-a-realizar';
   private urlEndPointListaServicio: string = 'http://localhost:8080/api-servicio';
 
-
   private HttpHeaders = new HttpHeaders ({'Content-Type': 'application/json'})
 
   constructor(private http: HttpClient,
@@ -66,12 +65,22 @@ export class PageServicioService {
         }
 
         console.error(e.error.mensaje);
-        swal(e.error.mensaje, e.error.error, 'error');
+        swal("Error al registrar el servicio ",e.error.mensaje,  'error');
         return throwError(() => e)
       })
     );
   }
 
+  getServicioARealizarFolio(folio): Observable<any>{
+     return this.http.get<any>(`${this.urlEndPoint}/${folio}`).pipe(
+       catchError(e => {
+         this.router.navigate(['/page-servicio']);
+         console.error(e.error.mensaje);
+         swal('Error al registrar', e.error.mensaje, 'error');
+         return throwError(()=>e)
+       })
+     );
+   }
 
   // ! MODIFICAR
   update(objetoServicioARealizar: ObjetoServicioARealizar): Observable<any>{

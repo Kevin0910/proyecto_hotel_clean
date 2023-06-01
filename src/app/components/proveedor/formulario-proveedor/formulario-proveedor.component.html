@@ -1,45 +1,62 @@
 <br />
+
+<ul class="alert alert-danger" *ngIf="errores?.length>0">
+  <li *ngFor="let err of errores"> {{err}} </li> </ul>
 <div class="card text-bg-dark mb-3 diseño_formulario" style="max-width: 65rem">
   <div class="card-header">Formulario proveedor</div>
   <div class="card-body">
-    <h5 class="card-title">Forulario</h5>
+    <h5 class="card-title">Formulario</h5>
 
     <form class="row g-3">
+      
       <div class="col-md-7">
         <label for="nombre" class="form-label">Nombre del proveedor.</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Ingresar nombre del proveedor..."
-          [(ngModel)]="proveedor.nombre"
-          name="nombre"
-        />
+        <input type="text" class="form-control" placeholder="Ingresar nombre del proveedor..."
+          [(ngModel)]="proveedor.nombre" name="nombre" required minlength="3" #nombre="ngModel" />
+        <div class="alert alert-danger" **ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+          <div *ngIf="nombre.errors.required">
+            Nombre es requerido
+          </div>
+          <div *ngIf="nombre.errors.minlength">
+            Nombre debe tener al menos 3 caracteres
+          </div>
+        </div>
       </div>
 
       <div class="col-md-7">
-        <label for="telefono" class="form-label">Telefono del proveedor.</label>
-        <input
-          type="tel"
-          class="form-control"
-          placeholder="Ingresar telefono del proveedor..."
-          [(ngModel)]="proveedor.telefono"
-          name="telefono"
-        />
+        <label for="telefono" class="form-label">Teléfono del proveedor.</label>
+        <input type="tel" class="form-control" placeholder="Ingresar telefono del proveedor..."
+          [(ngModel)]="proveedor.telefono" name="telefono" required  minlength="7" maxlength="10" #telefono="ngModel" />
+        <div class="alert alert-danger" **ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+          <div *ngIf="telefono.errors.required">
+            Teléfono es requerido
+          </div>
+          <div *ngIf="telefono.errors.minlength">
+            Teléfono debe tener al menos 7 digitos
+          </div>
+          <div *ngIf="telefono.errors.maxlength">
+            Teléfono debe tener máximo 10 digitos
+          </div>
+        </div>
       </div>
 
       <div class="col-md-7">
         <label for="correo" class="form-label">Correo del proveedor.</label>
-        <input
-          type="email"
-          class="form-control"
-          placeholder="Ingresar el correo del proveedor..."
-          [(ngModel)]="proveedor.correo"
-          name="correo"
-        />
+        <input type="email" class="form-control" placeholder="Ingresar el correo del proveedor..."
+          [(ngModel)]="proveedor.correo" name="correo" required email #correo="ngModel" />
+        <div class="alert alert-danger" **ngIf="correo.invalid && (correo.dirty || correo.touched)">
+          <div *ngIf="correo.errors.required">
+            Email es requerido
+          </div>
+          <div *ngIf="correo.errors.email">
+            Formato de email inválido
+          </div>
+        </div>
       </div>
 
       <br />
 
+<<<<<<< HEAD
         <div class="col-10">
           <button class="btn btn-primary col-2 m-lg-2" role="button" (click)="create()">
             Crear
@@ -49,9 +66,27 @@
             role="button"
             routerLink="/page-proveedor"
           >
+=======
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!proveedor.id else elseBlock" [disabled]="!proveedorForm.form.valid">
+            Crear
+            <i class="bi bi-plus-circle"></i></button>
+          <ng-template #elseBlock>
+            <button class="btn btn-primary" role="button" (click)="update()" [disabled]="!proveedorForm.form.valid">Editar <i class="bi bi-plus-circle"></i></button>
+          </ng-template>
+        </div>
+        <div class="col-sm-6">
+          <button class="btn btn-warning" role="button" routerLink="/page-proveedor">
+>>>>>>> Verificaciones
             Cancelar
+            <i class="bi bi-x-circle"></i>
           </button>
         </div>
+
+
+      
+     
 
       <!-- <div >
               <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!proveedor.id else elseBlock">Crear<i class="bi bi-plus-circle"></i></button>

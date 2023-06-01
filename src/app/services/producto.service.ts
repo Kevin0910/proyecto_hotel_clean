@@ -37,8 +37,8 @@ export class ProductoService {
 
 
   //! CREAR
-  create(objetoProducto: ObjetoProducto): Observable<ObjetoProducto>{
-    return this.http.post<ObjetoProducto>(`${this.urlEndPoint}/crear-producto`, objetoProducto, {headers:this.HttpHeaders}).pipe(
+  create(objetoProducto: ObjetoProducto): Observable<any>{
+    return this.http.post<any>(`${this.urlEndPoint}/crear-producto`, objetoProducto, {headers:this.HttpHeaders}).pipe(
       catchError(e => {
 
         if(e.status == 400){
@@ -46,7 +46,7 @@ export class ProductoService {
         }
 
         console.error(e.error.mensaje);
-        swal(e.error.mensaje, e.error.error, 'error');
+        swal("Error al crear", e.error.mensaje, 'error');
         return throwError(() => e)
       })
     );

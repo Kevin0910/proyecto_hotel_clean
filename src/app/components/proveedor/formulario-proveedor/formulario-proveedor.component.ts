@@ -41,15 +41,15 @@ export class FormularioProveedorComponent {
   create(): void{
     console.log(this.proveedor);
   this.proveedorService.create(this.proveedor).subscribe(
-    proveedor => {
+    jsonResponse => {
       this.router.navigate(['/page-proveedor'])
-      swal('Proveedor Guardado', `El proveedor ${proveedor.nombre} se a guardado con exito`, 'success')
-    }
-    // err =>{
-    //   this.errores = err.error.errors as string[];
-    //   console.error('Error en el codigo backend '+ err.status);
-    //   console.error(err.error.errors);
-    // }
+      swal('Proveedor Guardado', `El proveedor ${jsonResponse.proveedor.nombre} se ha guardado con éxito`, 'success')
+    },
+     err =>{
+       this.errores = err.error.errors as string[];
+       console.error('Error: '+ err.status);
+       console.error(err.error.errors);
+     }
   );
 }
 
@@ -59,13 +59,13 @@ export class FormularioProveedorComponent {
     this.proveedorService.update(this.proveedor)
     .subscribe (proveedor => {
         this.router.navigate(['/page-proveedor'])
-        swal('Proveedor Actualizado', `El proveedor ${proveedor.nombre} se a actualizado con exito`, 'success')
-      }
-      // err =>{
-      //   this.errores = err.error.errors as string[];
-      //   console.error('Error en el codigo backend '+ err.status);
-      //   console.error(err.error.errors);
-      // }
+        swal('Proveedor Actualizado', `El proveedor ${proveedor.nombre} se ha actualizado con éxito`, 'success')
+      },
+       err =>{
+        this.errores = err.error.errors as string[];
+        console.error('Error; '+ err.status);
+         console.error(err.error.errors);
+       }
     );
   }
 }

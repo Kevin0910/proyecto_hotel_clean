@@ -15,12 +15,13 @@ import swal from 'sweetalert2';
   styleUrls: ['./formulario-servicio.component.css']
 })
 export class FormularioServicioComponent {
+  public titulo: string = "Registrar servicio";
 
   public servicioARealizar: ObjetoServicioARealizar = new ObjetoServicioARealizar();
 
   public tipoDeServicios: ObjetoServicio[];
   public listaClientes: ObjetoCliente[];
-
+  public errores: string[];
   public cliente: ObjetoCliente = new ObjetoCliente();
 
   autoCompletado = new FormControl('');
@@ -32,6 +33,7 @@ export class FormularioServicioComponent {
               private activatedRoute: ActivatedRoute){}
 
   ngOnInit() {
+    this.cargarServicios();
 
     this.cargarServicioARealizar();
 
@@ -41,9 +43,20 @@ export class FormularioServicioComponent {
       flatMap(value => value ? this._filter(value || ''):[ ]),
     );
 
+
     this.pageServicioService.getListaServicio().subscribe(tipoDeServicios => this.tipoDeServicios = tipoDeServicios );
     this.clienteService.getClientes().subscribe(listaClientes => this.listaClientes = listaClientes);
     }
+
+
+  cargarServicios():void{
+    this.activatedRoute.params.subscribe(params => {
+      let folio = params['folio']
+      if(folio){
+        this.pageServicioService.getServicioARealizarFolio(folio).subscribe( (serviciosARealizar) => this.servicioARealizar = serviciosARealizar);
+      }
+    })
+  }
 
     private _filter(value: string): Observable<ObjetoCliente[]> {
       const filterValue = value.toLowerCase();
@@ -67,11 +80,11 @@ export class FormularioServicioComponent {
     create(): void{
       console.log(this.servicioARealizar);
       this.pageServicioService.create(this.servicioARealizar).subscribe(
-      serviciosARealizar => {
+        serviciosARealizar => {
         this.router.navigate(['/page-servicio'])
         swal('Servicio Guardado', `El servicio del cliente ${serviciosARealizar.cliente.nombre} ${serviciosARealizar.cliente.apellido1} se a guardado con exito`, 'success')
       }
-    )
+   );
   }
 
     //! MODIFICAR
@@ -92,6 +105,9 @@ export class FormularioServicioComponent {
 
 
 
+    fechaActual():string{
+      return new Date().toISOString().split("T")[0];
+    }
     compararTipoServicios(o1: ObjetoServicio, o2: ObjetoServicio):boolean{
       return o1 && o2 ? o1.id === o2.id : o1 === o2;
     }

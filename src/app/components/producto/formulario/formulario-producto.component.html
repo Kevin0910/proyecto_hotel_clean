@@ -1,4 +1,7 @@
-<br>
+<br />
+<ul class="alert alert-danger" *ngIf="errores?.length>0">
+  <li *ngFor="let err of errores"> {{err}} </li> </ul>
+
 <div class="card text-bg-dark mb-3 diseño_formulario" style="max-width: 65rem;">
   <div class="card-header">Formulario producto </div>
   <div class="card-body">
@@ -7,19 +10,41 @@
 
         <div class="col-md-7">
           <label for="nombre" class="form-label">Nombre del producto.</label>
-          <input type="text" class="form-control" placeholder="Ingresar nombre del proveedor..." [(ngModel)] = "producto.nombre" name="nombre">
+          <input type="text" class="form-control" placeholder="Ingresar nombre del producto..." [(ngModel)] = "producto.nombre" name="nombre"required minlength="3" #nombre="ngModel" />
+          <div class="alert alert-danger" **ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+            <div *ngIf="nombre.errors.required">
+              Nombre es requerido
+            </div>
+            <div *ngIf="nombre.errors.minlength">
+              Nombre debe tener al menos 3 caracteres
+            </div>
+          </div>
         </div>
 
         <div class="col-md-7">
           <label for="descripcion" class="form-label">Ingrese una descripcion.</label>
-          <input type="tel" class="form-control" placeholder="Ingresar descripcion del proveedor..." [(ngModel)] = 'producto.descripcion' name="descripcion" >
+          <input type="tel" class="form-control" placeholder="Ingresar descripcion del producto..." [(ngModel)] = 'producto.descripcion' name="descripcion" required minlength="3" #producto="ngModel" />
+          <div class="alert alert-danger" **ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
+            <div *ngIf="descripcion.errors.required">
+              Descripcion es requerida
+            </div>
+            <div *ngIf="descripcion.errors.minlength">
+              Descripción debe tener al menos 10 caracteres
+            </div>
+          </div>
         </div>
 
 
         <div class="col-md-7">
+<<<<<<< HEAD
           <label for="listaProveedores" class="col-form-label ">Lista de proveedores <i class="bi bi-briefcase"></i></label>
             <div class="col-sm-6">
               <select [compareWith]="compararProveedores" class="form-control" [(ngModel)]="producto.proveedor" name="listaProveedor">
+=======
+          <label for="listaProveedores" class="col-form-label col-sm-2">Lista de proveedores <i class="bi bi-briefcase"></i></label>
+            <div class="col-sm-6">
+              <select [compareWith]="compararProveedores" class="form-control" [(ngModel)]="producto.proveedor" name="listaProveedor" required>
+>>>>>>> Verificaciones
                 <option *ngFor="let listaProveedor of listaProveedores" [ngValue]="listaProveedor"> {{listaProveedor.id}}.- {{listaProveedor.nombre}} </option>
               </select>
             </div>
@@ -45,7 +70,6 @@
         </mat-form-field>
     </div> -->
 
-      <br>
 
           <div class="col-sm-10">
             <button class="btn btn-success col-2 m-lg-2" role="boton-crear" (click)="create()">Agregar</button>
