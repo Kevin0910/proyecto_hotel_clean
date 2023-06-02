@@ -37,7 +37,6 @@ export class FormularioProveedorComponent {
     })
   }
 
-  //!----------------------------------------------------
   create(): void{
     console.log(this.proveedor);
   this.proveedorService.create(this.proveedor).subscribe(
@@ -53,7 +52,6 @@ export class FormularioProveedorComponent {
   );
 }
 
-// ! AUN NO ESTA TERMINADO
   update():void{
     console.log(this.proveedor);
     this.proveedorService.update(this.proveedor)

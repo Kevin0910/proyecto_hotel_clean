@@ -23,7 +23,7 @@ export class ProductoService {
     return this.http.get<ObjetoProducto[]>(`${this.urlEndPoint}/lista-productos`)
   }
 
-  
+
 
   //TODO OBTENER CLIENTE MEDIANTE BUSCADOR
   busquedaProducto(termino: string): Observable<ObjetoProducto[] | null>{
@@ -54,8 +54,8 @@ export class ProductoService {
   }
 
    //! OBTENER MEDIANTE ID
-  getProducto(id): Observable<any>{
-    return this.http.get<any>(`${this.urlEndPoint}/buscar-producto-id/${id}`).pipe(
+  getProducto(id): Observable<ObjetoProducto>{
+    return this.http.get<ObjetoProducto>(`${this.urlEndPoint}/buscar-producto-id/${id}`).pipe(
       catchError(e => {
         this.router.navigate(['/page-producto']);
         console.error(e.error.mensaje);
@@ -71,9 +71,9 @@ export class ProductoService {
     return this.http.put<any>(`${this.urlEndPoint}/editar-producto/${objetoProducto.id}`, objetoProducto, {headers:this.HttpHeaders}).pipe(
         catchError(e => {
 
-          if(e.status == 400){
-            return throwError(() => e)
-          }
+          // if(e.status == 400){
+          //   return throwError(() => e)
+          // }
 
           console.error(e.error.mensaje);
           swal(e.error.mensaje, e.error.error, 'error');
@@ -87,7 +87,7 @@ export class ProductoService {
     return this.http.delete<any>(`${this.urlEndPoint}/eliminar-producto/${id}`, {headers:this.HttpHeaders}).pipe(
       catchError(e => {
         console.error(e.error.mensaje);
-        swal(e.error.mensaje, e.error.error, 'error');
+        swal('No se pudo borrar el producto', 'No esta permitido', 'error');
         return throwError(() => e)
       })
     );

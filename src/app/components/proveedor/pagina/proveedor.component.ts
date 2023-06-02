@@ -9,8 +9,8 @@ import { ProveedorService } from '../../../services/proveedor.service';
 })
 export class ProveedorComponent {
 
-  proveedores: ObjetoProveedor[];
-  proveedorBusquedas: ObjetoProveedor[] = [];
+  public proveedores: ObjetoProveedor[];
+  public proveedorBusquedas: ObjetoProveedor[] = [];
 
   constructor(private proveedorService:ProveedorService){  }
 
@@ -20,9 +20,9 @@ export class ProveedorComponent {
       )
     }
 
-    busquedaPorNombre(id: string): void {
-      if (id !== '') {
-        this.proveedorService.busquedaProveedor(id).subscribe(
+    busquedaPorNombre(termino: string): void {
+      if (termino !== '') {
+        this.proveedorService.busquedaProveedor(termino).subscribe(
           proveedores => this.proveedorBusquedas = proveedores
         );
       } else {
@@ -31,3 +31,4 @@ export class ProveedorComponent {
   }
 
 }
+

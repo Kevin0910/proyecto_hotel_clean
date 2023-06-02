@@ -103,7 +103,7 @@ export class PageServicioService {
     return this.http.delete<any>(`${this.urlEndPoint}/eliminar-servicio/${folio}`, {headers:this.HttpHeaders}).pipe(
       catchError(e => {
         console.error(e.error.mensaje);
-        swal('No se pudo borrar el servicio', 'error');
+        swal('No se pudo borrar el producto', 'termine el servicio existente', 'error');
         return throwError(() => e)
       })
     );
