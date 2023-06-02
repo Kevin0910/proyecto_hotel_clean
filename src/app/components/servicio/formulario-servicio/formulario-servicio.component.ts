@@ -69,7 +69,7 @@ export class FormularioServicioComponent {
     this.activatedRoute.params.subscribe(params => {
       let folio = params['folio']
       if(folio){
-        this.pageServicioService.getServicioARealizar(folio).subscribe( (serviciosARealizar) => this.servicioARealizar = serviciosARealizar)
+        this.pageServicioService.getServicioARealizarFolio(folio).subscribe( (serviciosARealizar) => this.servicioARealizar = serviciosARealizar)
       }
     })
   }

@@ -30,16 +30,16 @@ export class PageServicioService {
 
 
   // ! OBTENER POR ID
-  getServicioARealizar(folio): Observable<any>{
-    return this.http.get<any>(`${this.urlEndPoint}/editar-servicio/${folio}`).pipe(
-      catchError(e => {
-        this.router.navigate(['/page-servicio']);
-        console.error(e.error.mensaje);
-        swal('Error al editar', e.error.mensaje, 'error');
-        return throwError(()=>e)
-      })
-    );
-  }
+  // getServicioARealizar(folio): Observable<any>{
+  //   return this.http.get<any>(`${this.urlEndPoint}/buscar-servicio-a-realizar-folio/${folio}`).pipe(
+  //     catchError(e => {
+  //       this.router.navigate(['/page-servicio']);
+  //       console.error(e.error.mensaje);
+  //       swal('Error al editar', e.error.mensaje, 'error');
+  //       return throwError(()=>e)
+  //     })
+  //   );
+  // }
 
   // getServiciosRealizar(folio):Observable<ObjetoServicioARealizar[]>{
   //   return this.http.get<ObjetoServicioARealizar[]>(`${this.urlEndPoint}/editar-servicio/${folio}`)
@@ -72,7 +72,7 @@ export class PageServicioService {
   }
 
   getServicioARealizarFolio(folio): Observable<any>{
-     return this.http.get<any>(`${this.urlEndPoint}/${folio}`).pipe(
+     return this.http.get<any>(`${this.urlEndPoint}/buscar-servicio-a-realizar-folio/${folio}`).pipe(
        catchError(e => {
          this.router.navigate(['/page-servicio']);
          console.error(e.error.mensaje);

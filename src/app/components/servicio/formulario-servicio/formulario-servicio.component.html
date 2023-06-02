@@ -1,7 +1,8 @@
 <br>
-
 <ul class="alert alert-danger" *ngIf="errores?.length>0">
-  <li *ngFor="let err of errores"> {{err}} </li> </ul>
+  <li *ngFor="let err of errores"> {{err}} </li>
+</ul>
+
 <div class="card text-bg-dark mb-3 diseño_formulario" style="max-width: 65rem;">
   <div class="card-header">Formulario servicio </div>
   <div class="card-body">
@@ -79,11 +80,11 @@
 
 
       <div class="col-10">
-          <button class="btn btn-success col-2 m-lg-2" role="button" (click)="create()" *ngIf="!servicioARealizar.folio else elseBlock"> Crear</button>
+          <button class="btn btn-success col-2 m-lg-2" role="boton" (click)="create()" *ngIf="!servicioARealizar.folio else elseBlock"> Crear</button>
         <ng-template #elseBlock>
-          <button class="btn btn-success col-2 m-lg-2" role="button" (click)="update()">Editar</button>
+          <button class="btn btn-success col-2 m-lg-2" role="boton" (click)="update()">Editar</button>
         </ng-template>
-        <button class="btn btn-danger col-2 m-lg-2" [routerLink]="['/page-servicio']">Cancelar</button>
+        <button class="btn btn-danger col-2 m-lg-2" routerLink="/page-servicio">Cancelar</button>
       </div>
 
     </form>
