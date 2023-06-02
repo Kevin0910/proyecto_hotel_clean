@@ -40,9 +40,9 @@ export class ProveedorService {
     return this.http.post<any>(`${this.urlEndPoint}/crear-proveedor`, objetoProveedor, {headers:this.HttpHeaders}).pipe(
       catchError(e => {
 
-        if(e.status == 400){
-          return throwError(() => e)
-        }
+        // if(e.status == 400){
+        //   return throwError(() => e)
+        // }
 
         console.error(e.error.mensaje);
         swal("Error al crear",e.error.mensaje,'error');
@@ -71,9 +71,9 @@ export class ProveedorService {
     return this.http.put<any>(`${this.urlEndPoint}/editar-proveedor/${objetoProveedor.id}`, objetoProveedor, {headers:this.HttpHeaders}).pipe(
         catchError(e => {
 
-          if(e.status == 400){
-            return throwError(() => e)
-          }
+          // if(e.status == 400){
+          //   return throwError(() => e)
+          // }
 
           console.error(e.error.mensaje);
           swal("Error al editar",e.error.mensaje, 'error');
