@@ -1,7 +1,9 @@
+import { ProveedorService } from 'src/app/services/proveedor.service';
 import { Component } from '@angular/core';
 import { ObjetoProducto } from 'src/app/interfaces/producto';
 import { ProductoService } from '../../../services/producto.service';
 import swal from 'sweetalert2';
+import { ObjetoProveedor } from 'src/app/interfaces/proveedor';
 
 @Component({
   selector: 'page-producto',
@@ -10,15 +12,15 @@ import swal from 'sweetalert2';
 })
 export class ProductoComponent {
 
-  productos: ObjetoProducto[];
-  productoBusquedas: ObjetoProducto[] = [];
+  public productos: ObjetoProducto[];
+  public productoBusquedas: ObjetoProducto[] = [];
+
 
   constructor(private productoService:ProductoService){  }
 
   ngOnInit() {
     this.productoService.getProductos().subscribe(
-      (productos) => {this.productos = productos;}
-    );
+      (productos) => {this.productos = productos;} );
   }
 
 
@@ -34,7 +36,7 @@ export class ProductoComponent {
 
 
   //ELIMINAR CLIENTE DE BUSQUEDA
-  deleteBusqueda(objetoProducto:ObjetoProducto): void{
+  deleteBusquedaProducto(objetoProducto:ObjetoProducto): void{
     swal({
       title: 'Esta seguro?',
       text: `¿Seguro que desea eliminar el producto ${objetoProducto.nombre}?`,
@@ -51,7 +53,7 @@ export class ProductoComponent {
           response => {
             this.productoBusquedas = this.productoBusquedas.filter(busqProduc => busqProduc !== objetoProducto)
             swal(
-              'Cliente eliminado!',
+              'Producto eliminado!',
               `El cliente ${objetoProducto.nombre} ah sido eliminado`,
               'success'
             )

@@ -34,7 +34,7 @@
           <td> {{ productoBusqueda.descripcion }} </td>
           <td> {{ productoBusqueda.proveedor.nombre }} </td>
           <td> <button class="btn btn-warning" [routerLink]="['/producto/formulario-producto, producto.id']">Modificar</button> </td>
-          <td> <button class="btn btn-danger" role="boton-eliminar" (click)="deleteBusqueda(productoBusquedas)">Eliminar</button></td>
+          <td> <button class="btn btn-danger" role="boton-eliminar" (click)="deleteBusquedaProducto(productoBusquedas)">Eliminar</button></td>
         </tr>
       </tbody>
     </table>

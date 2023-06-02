@@ -19,11 +19,11 @@ export class FormularioProductoComponent {
 
   public errores: string[];
   public proveedores: ObjetoProveedor = new ObjetoProveedor();
-  public listaProveedores: ObjetoProveedor[]
+  public listaProveedores: ObjetoProveedor[];
   public proveedorBusquedas: ObjetoProveedor[] = [];
 
-  autoCompletado = new FormControl('');
-  proveedoresFiltrados: Observable<ObjetoProveedor[]>;
+  // autoCompletado = new FormControl('');
+  // proveedoresFiltrados: Observable<ObjetoProveedor[]>;
 
   public producto: ObjetoProducto = new ObjetoProducto();
 
@@ -35,11 +35,11 @@ export class FormularioProductoComponent {
 
 
   ngOnInit() {
-    this.proveedoresFiltrados = this.autoCompletado.valueChanges
-    .pipe(
-      map( value =>typeof value === 'string' ? value: value),
-      flatMap(value => value ? this._filter(value || ''):[ ]),
-    );
+    // this.proveedoresFiltrados = this.autoCompletado.valueChanges
+    // .pipe(
+    //   map( value =>typeof value === 'string' ? value: value),
+    //   flatMap(value => value ? this._filter(value || ''):[ ]),
+    // );
 
     this.cargarProducto();
 
@@ -47,21 +47,21 @@ export class FormularioProductoComponent {
   }
 
 
-  private _filter(value: string): Observable<ObjetoProveedor[]> {
-    const filterValue = value.toLowerCase();
-    return this.proveedorService.busquedaProveedor(filterValue);
-  }
+  // private _filter(value: string): Observable<ObjetoProveedor[]> {
+  //   const filterValue = value.toLowerCase();
+  //   return this.proveedorService.busquedaProveedor(filterValue);
+  // }
 
 
-  busquedaPorNombreProveedor(termino: string): void {
-    if (termino !== '') {
-      this.proveedorService.busquedaProveedor(termino).subscribe(
-        proveedores => this.proveedorBusquedas = proveedores
-      );
-    } else {
-      this.proveedorBusquedas = [];
-    }
-  }
+  // busquedaPorNombreProveedor(termino: string): void {
+  //   if (termino !== '') {
+  //     this.proveedorService.busquedaProveedor(termino).subscribe(
+  //       proveedores => this.proveedorBusquedas = proveedores
+  //     );
+  //   } else {
+  //     this.proveedorBusquedas = [];
+  //   }
+  // }
 
 
   cargarProducto():void{
@@ -79,7 +79,7 @@ export class FormularioProductoComponent {
   this.productoService.create(this.producto).subscribe(
     jsonResponse => {
       this.router.navigate(['/page-producto'])
-      swal('Producto Guardado', `El producto ${jsonResponse.producto.id.nombre} se ha guardado con éxito`, 'success')
+      swal('Producto Guardado', `El producto ${jsonResponse.producto.nombre} se ha guardado con éxito`, 'success')
     },
     err =>{
       this.errores = err.error.errors as string[];

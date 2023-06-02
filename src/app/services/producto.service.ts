@@ -23,6 +23,7 @@ export class ProductoService {
     return this.http.get<ObjetoProducto[]>(`${this.urlEndPoint}/lista-productos`)
   }
 
+  
 
   //TODO OBTENER CLIENTE MEDIANTE BUSCADOR
   busquedaProducto(termino: string): Observable<ObjetoProducto[] | null>{
