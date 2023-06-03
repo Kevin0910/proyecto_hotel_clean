@@ -80,9 +80,10 @@ export class FormularioServicioComponent {
     create(): void{
       console.log(this.servicioARealizar);
       this.pageServicioService.create(this.servicioARealizar).subscribe(
-        serviciosARealizar => {
+        jsonResponse => {
         this.router.navigate(['/page-servicio'])
-        swal('Servicio Guardado', `El servicio del cliente ${serviciosARealizar.cliente.nombre} ${serviciosARealizar.cliente.apellido1} se a guardado con exito`, 'success')
+        // window.alert('Se ha agrego con exito')
+        swal('Servicio Guardado', `El servicio del cliente ${this.servicioARealizar.cliente.nombre} ${this.servicioARealizar.cliente.apellido1} se a guardado con exito`, 'success')
       },
       err =>{
           this.errores = err.error.errors as string[];
@@ -98,7 +99,7 @@ export class FormularioServicioComponent {
       this.pageServicioService.update(this.servicioARealizar)
       .subscribe( servicioARealizar => {
           this.router.navigate(['/page-servicio'])
-          swal ('Servicio Guardado', `El servicio del cliente ${servicioARealizar.cliente.nombre} ${servicioARealizar.cliente.apellido1} se ha actualizado con exito`, 'success' )
+          swal ('Servicio Guardado', `El servicio del cliente ${this.servicioARealizar.cliente.nombre} ${this.servicioARealizar.cliente.apellido1} se ha actualizado con exito`, 'success' )
         }
         // err =>{
         //   this.errores = err.error.errors as string[];
