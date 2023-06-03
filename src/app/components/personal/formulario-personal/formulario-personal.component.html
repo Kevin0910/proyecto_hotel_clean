@@ -4,42 +4,53 @@
   <div class="card-body">
     <h5 class="card-title">Forulario</h5>
     <form class="row g-3">
+
       <div class="col-md-7">
-        <label for="inputEmail4" class="form-label">Nombre(s)</label>
-        <input type="text" class="form-control" id="inputEmail4" placeholder="Ingresar nombre">
+        <label for="nombre" class="form-label">Nombre(s)</label>
+        <input type="text" class="form-control" placeholder="Ingresar nombre..." [(ngModel)] ="personal.nombre" name="nombre">
       </div>
+
+      <div class="col-md-7">
+        <label for="apellido1" class="form-label">Apellido materno</label>
+        <input type="text" class="form-control" placeholder="Ingresar apellido paterno" [(ngModel)] = "personal.apellido1" name="apellido1">
+      </div>
+
+      <div class="col-md-7">
+        <label for="apellido2" class="form-label">Apellido paterno</label>
+        <input type="text" class="form-control" placeholder="Ingresar apellido paterno" [(ngModel)]="personal.apellido2" name="apellido2">
+      </div>
+
       <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Apellido paterno</label>
-        <input type="text" class="form-control" id="inputPassword4" placeholder="Ingresar apellido paterno">
+        <label for="telefono" class="form-label">Telefono</label>
+        <input type="tel" class="form-control" placeholder="Ingresar apellido materno" [(ngModel)]="personal.telefono" name="telefono">
       </div>
+
       <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Telefono</label>
-        <input type="tel" class="form-control" id="inputPassword4" placeholder="Ingresar apellido materno">
+        <label for="email" class="form-label">Correo</label>
+        <input type="email" class="form-control" placeholder="Ingresar correo" [(ngModel)]="personal.correo" name="correo">
       </div>
+
       <div class="col-md-6">
-        <label for="inputPassword4" class="form-label">Correo</label>
-        <input type="email" class="form-control" id="inputPassword4" placeholder="Ingresar correo">
+        <label for="roles" class="col-form-label ">Rol del empleado <i class="bi bi-briefcase"></i></label>
+          <div class="col-md-12">
+            <select [compareWith]="compararTipoEmpleado" class="form-control" [(ngModel)]="personal.tipoDeEmpleado" name="listaRol">
+              <option *ngFor="let listaRol of listaDeRoles" [ngValue]="listaRol"> {{listaRol.id}}.- {{listaRol.tipoDeEmpleado}} </option>
+            </select>
+          </div>
       </div>
-      <div class="col-md-4">
-        <label for="inputState" class="form-label">Tipo de empleado</label>
-        <select id="inputState" class="form-select">
-          <option selected>Seleccionar rol del empelado...</option>
-          <option>Manager</option>
-          <option>Empleado de limpieza</option>
-        </select>
+
+      <div class="col-md-6">
+        <label for="manager" class="col-form-label">Manager <i class="bi bi-briefcase"></i></label>
+          <div class="col-md-12">
+            <select [compareWith]="compararListaManager" class="form-control" [(ngModel)]="personal.jefe" name="listaManager">
+              <option *ngFor="let listaManager of listaManagers" [ngValue]="listaManager"> {{listaManager.id}}.- {{listaManager.nombre}} </option>
+            </select>
+          </div>
       </div>
-      <div class="col-md-4">
-        <label for="inputState" class="form-label">Jefe</label>
-        <select id="inputState" class="form-select">
-          <option selected>Seleccione el jefe...</option>
-          <option>Jefe 1</option>
-          <option>Jefe 2</option>
-          <option>Jefe 3</option>
-        </select>
-      </div>
+
       <div class="col-10">
         <button class="btn btn-success col-2 m-lg-2">Editar</button>
-        <button class="btn btn-danger col-2 m-lg-2" [routerLink]="['/page-proveedor']">Cancelar</button>
+        <button class="btn btn-danger col-2 m-lg-2" [routerLink]="['/page-personal']">Cancelar</button>
       </div>
     </form>
   </div>

@@ -1,7 +1,12 @@
 <div class="card border-primary" style="max-width: 69rem;">
-  <div class="card-header">Sección de personal</div>
+  <h3 class="card-header">Sección de personal</h3>
   <div class="card-body text-primary">
-    <h5 class="card-title">Tablla de personal</h5>
+    <h3 class="card-title">Tablla de personal</h3>
+
+    <div>
+      <button class="btn btn-success" type="button" [routerLink]="['/personal/formulario-personal']">Crear servicio</button>
+    </div>
+    <br>
 
     <div class="form-control">
       <buscadorBox (onDebouce)="busquedaPorNombreEmpleado($event)" placeholder="Busqueda del personal"></buscadorBox>
@@ -34,7 +39,7 @@
           <td>{{ personalBusqueda.correo }}</td>
           <td>{{ personalBusqueda.jefe ? personalBusqueda.jefe.id: 'Null' }}</td>
           <td>{{ personalBusqueda.tipoDeEmpleado.tipoDeEmpleado}}</td>
-          <td><button class="btn btn-warning" [routerLink]="['/personal/formulario-personal', personal.id]">Editar</button></td>
+          <td><button class="btn btn-warning" [routerLink]="['/personal/formulario-personal', personalBusqueda.id]">Editar</button></td>
         </tr>
       </tbody>
     </table>
@@ -54,7 +59,7 @@
           <th>Correo</th>
           <th>Rol</th>
           <th>Manager</th>
-          <th>Editar</th>
+          <!-- <th>Editar</th> -->
         </tr>
       </thead>
       <tbody>
@@ -67,7 +72,7 @@
           <td>{{personal.correo}}</td>
           <td>{{personal.tipoDeEmpleado.tipoDeEmpleado}}</td>
           <td>{{personal.jefe ? personal.jefe.id: 'Null'}}</td>
-          <td><button class="btn btn-warning" [routerLink]="['/personal/formulario-personal']">Editar</button></td>
+          <!-- <td><button class="btn btn-warning" [routerLink]="['/personal/formulario-personal']">Editar</button></td> -->
         </tr>
       </tbody>
     </table>

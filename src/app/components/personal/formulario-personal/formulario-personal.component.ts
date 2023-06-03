@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { PersonalService } from '../../../services/personal.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ObjetoPersonal } from 'src/app/interfaces/personal';
+import swal from 'sweetalert2';
+import { ObjetoTipoDeEmpleado } from 'src/app/interfaces/tipoDeEmpleado';
 
 @Component({
   selector: 'app-formulario-personal',
@@ -10,27 +12,88 @@ import { ObjetoPersonal } from 'src/app/interfaces/personal';
 })
 export class FormularioPersonalComponent {
 
-  public personal: ObjetoPersonal;
+  public personal: ObjetoPersonal = new ObjetoPersonal();
+  public listaDeRoles: ObjetoTipoDeEmpleado[];
+  public listaManagers: ObjetoPersonal[];
+
+
 
   constructor(private personalService:PersonalService,
-              private activatedRoute: ActivatedRoute){
+              private activatedRoute: ActivatedRoute,
+              private router: Router){
 
   }
 
   ngOnInit(){
-    // this.cargarPersonalId();
+
+    this.personalService.getmManager().subscribe(listaManager => this.listaManagers = listaManager)
+    this.personalService.getTipoDeEmpleado().subscribe(tipoDeEmpleado => this.listaDeRoles = tipoDeEmpleado)
   }
 
 
-  // cargarPersonalId(): void{
-  //   this.activatedRoute.params.subscribe(params => {
-  //     let id = params['id']
-  //     if(id){
-  //       this.personalService.getPersonalId(id).subscribe(
-  //         (personal) => this.personal = personal)
-  //     }
-  //   })
-  // }
+  cargarPersonalId(): void{
+    this.activatedRoute.params.subscribe(params => {
+      let id = params['id']
+      if(id){
+        this.personalService.getPersonalId(id).subscribe(
+          (personal) => this.personal = personal)
+      }
+    })
+  }
 
-  
+    // ! Cargar datos del formulario
+    cargarPersonal(): void{
+      this.activatedRoute.params.subscribe(params => {
+        let id = params['id']
+        if(id){
+          this.personalService.getPersonalId(id).subscribe( (personal) => this.personal = personal)
+        }
+      })
+    }
+
+    //! CREAR
+    create(): void{
+      console.log(this.personal);
+      this.personalService.create(this.personal).subscribe(
+        jsonResponse => {
+        this.router.navigate(['/page-personal'])
+        // window.alert('Se ha agrego con exito')
+        swal('Servicio Guardado', `El servicio del empleado ${jsonResponse.nombre} ${jsonResponse.apellido1} se a guardado con exito`, 'success')
+      }
+      // err =>{
+      //     this.errores = err.error.errors as string[];
+      //     console.error('Acomplete el formulario '+ err.status);
+      //     console.error(err.error.errors);
+      //   }
+   );
+  }
+
+    //! MODIFICAR
+    update():void{
+      //console.log(this.serviciosARealizar)
+      this.personalService.update(this.personal)
+      .subscribe( jsonResposnse => {
+          this.router.navigate(['/page-servicio'])
+          swal ('Empleado Guardado', `El empleado ${jsonResposnse.nombre} ${jsonResposnse.apellido1} se ha actualizado con exito`, 'success' )
+        }
+        // err =>{
+        //   this.errores = err.error.errors as string[];
+        //   console.error('Error en el codigo backend '+ err.status);
+        //   console.error(err.error.errors);
+        // }
+      );
+    }
+
+
+    compararListaManager(o1: ObjetoPersonal, o2:ObjetoPersonal):boolean{
+      return o1 && o2 ? o1.id === o2.id : o1 === o2;
+    }
+
+    compararTipoEmpleado(o1: ObjetoTipoDeEmpleado, o2:ObjetoTipoDeEmpleado):boolean{
+      return o1 && o2 ? o1.id === o2.id : o1 === o2;
+    }
+
+
+
+
 }
