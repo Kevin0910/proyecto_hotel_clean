@@ -16,6 +16,7 @@ export class FormularioPersonalComponent {
   public listaDeRoles: ObjetoTipoDeEmpleado[];
   public listaManagers: ObjetoPersonal[];
 
+  public errores: string[];
 
 
   constructor(private personalService:PersonalService,
@@ -25,6 +26,8 @@ export class FormularioPersonalComponent {
   }
 
   ngOnInit(){
+    this.cargarPersonalId();
+    this.cargarPersonal();
 
     this.personalService.getmManager().subscribe(listaManager => this.listaManagers = listaManager)
     this.personalService.getTipoDeEmpleado().subscribe(tipoDeEmpleado => this.listaDeRoles = tipoDeEmpleado)
@@ -58,13 +61,13 @@ export class FormularioPersonalComponent {
         jsonResponse => {
         this.router.navigate(['/page-personal'])
         // window.alert('Se ha agrego con exito')
-        swal('Servicio Guardado', `El servicio del empleado ${jsonResponse.nombre} ${jsonResponse.apellido1} se a guardado con exito`, 'success')
-      }
-      // err =>{
-      //     this.errores = err.error.errors as string[];
-      //     console.error('Acomplete el formulario '+ err.status);
-      //     console.error(err.error.errors);
-      //   }
+        swal('Servicio Guardado', `El servicio del empleado ${this.personal.nombre} ${this.personal.apellido1} se a guardado con exito`, 'success')
+      },
+      err =>{
+          this.errores = err.error.errors as string[];
+          console.error('Acomplete el formulario '+ err.status);
+          console.error(err.error.errors);
+        }
    );
   }
 
@@ -73,7 +76,7 @@ export class FormularioPersonalComponent {
       //console.log(this.serviciosARealizar)
       this.personalService.update(this.personal)
       .subscribe( jsonResposnse => {
-          this.router.navigate(['/page-servicio'])
+          this.router.navigate(['/page-personal'])
           swal ('Empleado Guardado', `El empleado ${jsonResposnse.nombre} ${jsonResposnse.apellido1} se ha actualizado con exito`, 'success' )
         }
         // err =>{

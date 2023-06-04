@@ -100,12 +100,12 @@ export class FormularioServicioComponent {
       .subscribe( servicioARealizar => {
           this.router.navigate(['/page-servicio'])
           swal ('Servicio Guardado', `El servicio del cliente ${this.servicioARealizar.cliente.nombre} ${this.servicioARealizar.cliente.apellido1} se ha actualizado con exito`, 'success' )
+        },
+        err =>{
+          this.errores = err.error.errors as string[];
+          console.error('Error en el codigo backend '+ err.status);
+          console.error(err.error.errors);
         }
-        // err =>{
-        //   this.errores = err.error.errors as string[];
-        //   console.error('Error en el codigo backend '+ err.status);
-        //   console.error(err.error.errors);
-        // }
       );
     }
 

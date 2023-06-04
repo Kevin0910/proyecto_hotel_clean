@@ -17,8 +17,10 @@ export class PersonalComponent {
 
   ngOnInit(){
     this.personalService.getPersonal().subscribe(
-      (personales) => {this.personales = personales;}
-    )
+      (personales) => {this.personales = personales;});
+
+      
+
   }
 
 

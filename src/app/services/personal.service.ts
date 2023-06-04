@@ -61,7 +61,7 @@ export class PersonalService {
 
   //CREAR PERSONAL
   create(personal: ObjetoPersonal): Observable<any>{
-    return this.http.post<any>(`${this.urlEndPoint}/crear-empleado`, personal, {headers:this.HttpHeaders}).pipe(
+    return this.http.post<ObjetoPersonal>(`${this.urlEndPoint}/crear-empleado`, personal, {headers:this.HttpHeaders}).pipe(
       catchError(e => {
 
         if(e.status == 400){
@@ -78,7 +78,7 @@ export class PersonalService {
 
   //MODIFICAR PERSONAL
   update(objetoPersonal: ObjetoPersonal): Observable<any>{
-    return this.http.put<any>(`${this.urlEndPoint}/editar-empleado/${objetoPersonal.id}`, objetoPersonal, {headers:this.HttpHeaders}).pipe(
+    return this.http.put<ObjetoPersonal>(`${this.urlEndPoint}/editar-empleado/${objetoPersonal.id}`, objetoPersonal, {headers:this.HttpHeaders}).pipe(
         catchError(e => {
 
           if(e.status == 400){
