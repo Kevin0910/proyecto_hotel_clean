@@ -37,6 +37,7 @@ import { FormularioProductoComponent } from './components/producto/formulario/fo
 import { FormularioMonitoreoComponent } from './components/monitoreo/formulario-monitoreo/formulario-monitoreo.component';
 import { FormularioReporteComponent } from './components/reporte/formulario-reporte/formulario-reporte.component';
 import { FormularioProveedorComponent } from './components/proveedor/formulario-proveedor/formulario-proveedor.component';
+import { ModalMonitoreoComponent } from './components/monitoreo/modal-monitoreo/modal-monitoreo.component';
 
 
 
@@ -61,7 +62,8 @@ import { FormularioProveedorComponent } from './components/proveedor/formulario-
     FormularioProductoComponent,
     FormularioMonitoreoComponent,
     FormularioReporteComponent,
-    FormularioProveedorComponent
+    FormularioProveedorComponent,
+    ModalMonitoreoComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,6 @@
+<modal-monitoreo *ngIf="monitoreoSeleccionado" [monitoreo] = monitoreoSeleccionado> </modal-monitoreo>
+
+
 <div class="card border-primary" style="max-width: 69rem;">
   <div class="card-header">Sección de monitoreo</div>
   <div class="card-body text-primary">
@@ -43,9 +46,10 @@
           <th>Folio</th>
           <th>Fecha</th>
           <th>Hora</th>
-          <th>Manager</th>
           <th>Servicio</th>
-          <th>Cliente</th>
+          <th>Nivel de piso</th>
+          <th>Habitación</th>
+          <th>Estado</th>
         </tr>
       </thead>
       <tbody>
@@ -53,9 +57,10 @@
           <td>{{ monitoreo.folio }}</td>
           <td>{{ monitoreo.fecha }}</td>
           <td>{{ monitoreo.hora }}</td>
-          <td>{{ monitoreo.manager.id }}</td>
-          <td>{{ monitoreo.servicio.folio }}</td>
-          <td>{{ monitoreo.servicio.cliente.id}}</td>
+          <td>{{ monitoreo.servicio.servicio.nombre }}</td>
+          <td>Nivel {{ monitoreo.servicio.cliente.habitacion.piso}}</td>
+          <td>{{ monitoreo.servicio.cliente.habitacion.nombre}}</td>
+          <td> <button type="button" class="btn btn-primary" (click)="abrirModal(monitoreo)" data-bs-toggle="modal" >Reporte</button> </td>
         </tr>
       </tbody>
     </table>
