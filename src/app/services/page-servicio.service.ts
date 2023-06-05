@@ -5,6 +5,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { ObjetoServicio } from '../interfaces/servicio';
 import { ObjetoServicioARealizar } from '../interfaces/servicioARealizar';
 import swal from 'sweetalert2';
+import { ObjetoServicioActProd } from '../interfaces/servicioActProd';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,9 @@ export class PageServicioService {
 
   private urlEndPoint: string = 'http://localhost:8080/api-servicio-a-realizar';
   private urlEndPointListaServicio: string = 'http://localhost:8080/api-servicio';
+  private urlEndPointListaServActProd: string = 'http://localhost:8080/api-servactprod';
+
+
 
   private HttpHeaders = new HttpHeaders ({'Content-Type': 'application/json'})
 
@@ -27,6 +31,19 @@ export class PageServicioService {
   getServicios(): Observable<ObjetoServicioARealizar[]>{
     return this.http.get<ObjetoServicioARealizar[]>(`${this.urlEndPoint}/lista-servicio-a-realizar`)
   }
+
+  getListaLimpieza(): Observable<ObjetoServicioActProd[]>{
+    return this.http.get<ObjetoServicioActProd[]>(`${this.urlEndPointListaServActProd}/lista-limpieza`)
+  }
+
+  getListaSanitizacion(): Observable<ObjetoServicioActProd[]>{
+    return this.http.get<ObjetoServicioActProd[]>(`${this.urlEndPointListaServActProd}/lista-sanitizacion`)
+  }
+
+  getListaDobleServicio(): Observable<ObjetoServicioActProd[]>{
+    return this.http.get<ObjetoServicioActProd[]>(`${this.urlEndPointListaServActProd}/lista-servicio-doble`)
+  }
+
 
 
   // ! OBTENER POR ID
