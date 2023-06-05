@@ -13,15 +13,15 @@
       <div class="col-md-7">
         <label for="nombre" class="form-label">Nombre del proveedor.</label>
         <input type="text" class="form-control" placeholder="Ingresar nombre del proveedor..."
-          [(ngModel)]="proveedor.nombre" name="nombre"  #nombre="ngModel" required minlength="3" />    <!-- -->
-        <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
-          <div *ngIf="nombre.errors.required">
-            Nombre es requerido
+          [(ngModel)]="proveedor.nombre" name="nombre"  #nombre="ngModel" required minlength="3" maxlength="25" />    <!-- -->
+          <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+            <div *ngIf="nombre.errors.required">
+              Nombre es requerido
+            </div>
+            <div *ngIf="nombre.errors.minlength">
+              Nombre debe tener al menos 3 caracteres
+            </div>
           </div>
-          <div *ngIf="nombre.errors.minlength">
-            Nombre debe tener al menos 3 caracteres
-          </div>
-        </div>
       </div>
 
       <div class="col-md-7">
@@ -44,7 +44,7 @@
       <div class="col-md-7">
         <label for="correo" class="form-label">Correo del proveedor.</label>
         <input type="email" class="form-control" placeholder="Ingresar el correo del proveedor..."
-          [(ngModel)]="proveedor.correo" name="email" required email #email="ngModel" />
+          [(ngModel)]="proveedor.correo" name="email" required email  maxlength="50" #email="ngModel" />
         <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
           <div *ngIf="email.errors.required">
             Email es requerido

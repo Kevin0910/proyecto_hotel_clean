@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PersonalService } from '../../../services/personal.service';
-import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ObjetoPersonal } from 'src/app/interfaces/personal';
 import swal from 'sweetalert2';
 import { ObjetoTipoDeEmpleado } from 'src/app/interfaces/tipoDeEmpleado';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-formulario-personal',
@@ -78,12 +78,12 @@ export class FormularioPersonalComponent {
       .subscribe( jsonResposnse => {
           this.router.navigate(['/page-personal'])
           swal ('Empleado Guardado', `El empleado ${jsonResposnse.nombre} ${jsonResposnse.apellido1} se ha actualizado con exito`, 'success' )
-        }
-        // err =>{
-        //   this.errores = err.error.errors as string[];
-        //   console.error('Error en el codigo backend '+ err.status);
-        //   console.error(err.error.errors);
-        // }
+        },
+         err =>{
+           this.errores = err.error.errors as string[];
+           console.error('Error en el codigo backend '+ err.status);
+           console.error(err.error.errors);
+         }
       );
     }
 

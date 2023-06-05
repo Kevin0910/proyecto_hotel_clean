@@ -11,7 +11,7 @@
 
         <div class="col-md-7">
           <label for="nombre" class="form-label">Nombre del producto.</label>
-          <input type="text" class="form-control" placeholder="Ingresar nombre del producto..." [(ngModel)] = "producto.nombre" name="nombre"required minlength="3" #nombre="ngModel" />
+          <input type="text" class="form-control" placeholder="Ingresar nombre del producto..." [(ngModel)] = "producto.nombre" name="nombre" required minlength="3" maxlength="30" #nombre="ngModel" />
           <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
             <div *ngIf="nombre.errors.required">
               Nombre es requerido
@@ -19,15 +19,24 @@
             <div *ngIf="nombre.errors.minlength">
               Nombre debe tener al menos 3 caracteres
             </div>
+            <div *ngIf="nombre.errors.maxlength">
+              Nombre debe tener máximo 30 digitos
+            </div>
           </div>
         </div>
 
         <div class="col-md-7">
           <label for="descripcion" class="form-label">Nombre del producto.</label>
-          <input type="text" class="form-control" placeholder="Ingresar descripcion..." [(ngModel)] = "producto.descripcion" name="descripcion"required #descripcion="ngModel" />
+          <input type="text" class="form-control" placeholder="Ingresar descripcion..." [(ngModel)] = "producto.descripcion" name="descripcion" required minlength="5" maxlength="100"  #descripcion="ngModel" />
           <div class="alert alert-danger" *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)">
             <div *ngIf="descripcion.errors.required">
-              Nombre es requerido
+              Descripción es requerida
+            </div>
+            <div *ngIf="descripcion.errors.minlength">
+              Descripción debe tener al menos 5 caracteres
+            </div>
+            <div *ngIf="descripcion.errors.maxlength">
+              Descripción debe tener máximo 100 digitos
             </div>
           </div>
         </div>

@@ -1,4 +1,8 @@
 <br>
+<ul class="alert alert-danger" *ngIf="errores?.length>0">
+  <li *ngFor="let err of errores"> {{err}} </li>
+</ul>
+
 <div class="card text-bg-dark mb-3 diseño_formulario" style="max-width: 65rem;">
   <h3 class="card-header">Formulario del personal </h3>
   <div class="card-body">
@@ -7,27 +11,68 @@
 
       <div class="col-md-7">
         <label for="nombre" class="form-label">Nombre(s)</label>
-        <input type="text" class="form-control" placeholder="Ingresar nombre..." [(ngModel)] ="personal.nombre" name="nombre">
+        <input type="text" class="form-control" placeholder="Ingresar nombre..." [(ngModel)] ="personal.nombre" name="nombre" #nombre="ngModel" required minlength="3" maxlength="30" />    <!-- -->
+        <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+          <div *ngIf="nombre.errors.required">
+            Nombre es requerido
+          </div>
+          <div *ngIf="nombre.errors.minlength">
+            Nombre debe tener al menos 3 caracteres
+          </div>
+          <div *ngIf="nombre.errors.maxlength">
+            Nombre debe tener máximo 30 digitos
+          </div>
+        </div>
       </div>
 
       <div class="col-md-7">
-        <label for="apellido1" class="form-label">Apellido materno</label>
-        <input type="text" class="form-control" placeholder="Ingresar apellido paterno" [(ngModel)] = "personal.apellido1" name="apellido1">
+        <label for="apellido1" class="form-label">Apellido paterno</label>
+        <input type="text" class="form-control" placeholder="Ingresar apellido paterno" [(ngModel)] = "personal.apellido1" name="apellido1" #apellido1="ngModel" required minlength="3" maxlength="15" />    <!-- -->
+        <div class="alert alert-danger" *ngIf="apellido1.invalid && (apellido1.dirty || apellido1.touched)">
+          <div *ngIf="apellido1.errors.required">
+            Apellido paterno es requerido
+          </div>
+          <div *ngIf="apellido1.errors.minlength">
+            Apellido paterno debe tener al menos 3 caracteres
+          </div>
+          <div *ngIf="apellido1.errors.maxlength">
+            Apellido paterno debe tener máximo 15 digitos
+          </div>
+        </div>
       </div>
 
       <div class="col-md-7">
-        <label for="apellido2" class="form-label">Apellido paterno</label>
-        <input type="text" class="form-control" placeholder="Ingresar apellido paterno" [(ngModel)]="personal.apellido2" name="apellido2">
+        <label for="apellido2" class="form-label">Apellido materno</label>
+        <input type="text" class="form-control" placeholder="Ingresar apellido materno" [(ngModel)]="personal.apellido2" name="apellido2" #apellido2="ngModel"  minlength="3" maxlength="15" />    <!-- -->
+        <div class="alert alert-danger" *ngIf="apellido2.invalid && (apellido2.dirty || apellido2.touched)">
+          <div *ngIf="apellido2.errors.minlength">
+            Apellido materno debe tener al menos 3 caracteres
+          </div>
+          <div *ngIf="apellido2.errors.maxlength">
+            Apellido materno debe tener máximo 15 digitos
+          </div>
+        </div>
       </div>
 
       <div class="col-md-6">
         <label for="telefono" class="form-label">Telefono</label>
-        <input type="tel" class="form-control" placeholder="Ingresar apellido materno" [(ngModel)]="personal.telefono" name="telefono">
+        <input type="tel" class="form-control" placeholder="Ingresar apellido materno" [(ngModel)]="personal.telefono" name="telefono" required  minlength="7" maxlength="10" #telefono="ngModel" />
+        <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+          <div *ngIf="telefono.errors.required">
+            Teléfono es requerido
+          </div>
+          <div *ngIf="telefono.errors.minlength">
+            Teléfono debe tener al menos 7 digitos
+          </div>
+          <div *ngIf="telefono.errors.maxlength">
+            Teléfono debe tener máximo 10 digitos
+          </div>
+        </div>
       </div>
 
       <div class="col-md-6">
         <label for="email" class="form-label">Correo</label>
-        <input type="email" class="form-control" placeholder="Ingresar correo" [(ngModel)]="personal.correo" name="correo">
+        <input type="email" class="form-control" placeholder="Ingresar correo" [(ngModel)]="personal.correo" name="correo" 
       </div>
 
       <div class="col-md-6">
