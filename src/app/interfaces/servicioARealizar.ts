@@ -1,4 +1,5 @@
 import { ObjetoCliente } from "./cliente";
+import { Jefe } from "./personal";
 import { ObjetoServicio } from "./servicio";
 
 export class ObjetoServicioARealizar {
@@ -7,4 +8,5 @@ export class ObjetoServicioARealizar {
   hora: string;
   servicio: ObjetoServicio;
   cliente: ObjetoCliente;
+  jefe: Jefe;
 }

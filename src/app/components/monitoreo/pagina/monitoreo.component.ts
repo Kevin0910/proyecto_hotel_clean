@@ -24,7 +24,6 @@ export class MonitoreoComponent {
     )
   }
 
-
   busquedaPorNombreManager(termino: string): void {
     if (termino !== '') {
       this.monitoreoService.busquedaManager(termino).subscribe(
@@ -35,11 +34,8 @@ export class MonitoreoComponent {
     }
   }
 
-
   abrirModal(objetoMonitoreo:ObjetoMonitoreo){
     this.monitoreoSeleccionado = objetoMonitoreo;
     this.modalMonitoreoService.abrirModalMonitoreo();
     }
-
-
 }
