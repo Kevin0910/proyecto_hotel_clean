@@ -8,7 +8,7 @@
       <div class="modal-body">
         <ul *ngIf="monitoreo" class="list-group list-group-flush">
           <li class="list-group-item">Nombre del cliente: {{monitoreo.servicio.cliente.nombre}} {{monitoreo.servicio.cliente.apellido1}} {{monitoreo.servicio.cliente.apellido2}} </li>
-          <li class="list-group-item">Nombre del empleado: {{monitoreo.empleado.nombre}} {{monitoreo.empleado.apellido1}} {{monitoreo.manager.apellido2}}  </li>
+          <li class="list-group-item">Nombre del manager: {{monitoreo.manager.nombre}} {{monitoreo.manager.apellido1}} {{monitoreo.manager.apellido2}}</li>
           <li class="list-group-item">No. Piso: {{monitoreo.servicio.cliente.habitacion.piso}} </li>
           <li class="list-group-item">No. Habitación: {{monitoreo.servicio.cliente.habitacion.nombre}} </li>
         </ul>

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ObjetoServicioARealizar } from 'src/app/interfaces/servicioARealizar';
+import { PageServicioService } from 'src/app/services/page-servicio.service';
 
 @Component({
   selector: 'page-reporte',
@@ -6,5 +8,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./reporte.component.css']
 })
 export class ReporteComponent {
+
+  public serviciosARealizar: ObjetoServicioARealizar[];
+
+  mostrarBusqReporte = false;
+  mostrarBusqManager = false;
+
+  constructor(private pageServicioService:PageServicioService){  }
+
+  ngOnInit() {
+    this.pageServicioService.getServicios().subscribe(
+      (serviciosARealizar) => {this.serviciosARealizar = serviciosARealizar;});
+
+    
+  }
 
 }

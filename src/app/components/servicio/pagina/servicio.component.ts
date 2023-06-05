@@ -45,8 +45,8 @@ export class ServicioComponent {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      cancelButtonText:'No, eliminar',
-      confirmButtonText: 'Si, eliminar!'
+      cancelButtonText:'No, cancelar',
+      confirmButtonText: 'Si, cancelar!'
     }).then((result) => {
       if (result.value) {
         this.pageServicioService.delete(busquedaServiciARealizar.folio).subscribe(
