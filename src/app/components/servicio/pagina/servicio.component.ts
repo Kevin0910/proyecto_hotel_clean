@@ -33,6 +33,26 @@ export class ServicioComponent {
     }
   }
 
+  busquedaPorManager(termino: string): void {
+    if (termino !== '') {
+      this.pageServicioService.busquedaServicioManager(termino).subscribe(
+        (serviciosARealizar) => this.servicioARealizarBusquedas = serviciosARealizar
+      );
+    } else {
+      this.servicioARealizarBusquedas = [];
+    }
+  }
+
+  busquedaPorServicio(termino: string): void {
+    if (termino !== '') {
+      this.pageServicioService.busquedaServicio(termino).subscribe(
+        (serviciosARealizar) => this.servicioARealizarBusquedas = serviciosARealizar
+      );
+    } else {
+      this.servicioARealizarBusquedas = [];
+    }
+  }
+
 
 
 

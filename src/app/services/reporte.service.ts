@@ -26,8 +26,17 @@ export class ReporteService {
 
 
   //TODO OBTENER CLIENTE MEDIANTE BUSCADOR
-  busquedaEmpleado(termino: string): Observable<ObjetoServicio[] | null>{
-    return this.http.get<ObjetoServicio[]>(`${this.urlEndPoint}/empleado-busqueda/${termino}`)
+  busqEmpleado(termino: string): Observable<ObjetoServicio[] | null>{
+    return this.http.get<ObjetoServicio[]>(`${this.urlEndPoint}/servicio-a-realizar-manager/${termino}`)
+          .pipe(
+            catchError(e => {
+              console.log(e)
+              return throwError(() => e)
+            })
+          );
+  }
+  busqActividad(termino: string): Observable<ObjetoServicio[] | null>{
+    return this.http.get<ObjetoServicio[]>(`${this.urlEndPoint}/servicio-a-realizar-servicio/${termino}`)
           .pipe(
             catchError(e => {
               console.log(e)
@@ -36,7 +45,7 @@ export class ReporteService {
           );
   }
 
-
+  
   // getPersonalId(id): Observable<any>{
   //   return this.http.get<any>(`${this.urlEndPoint}/buscar-empleado-id/${id}`).pipe(
   //     catchError(e => {

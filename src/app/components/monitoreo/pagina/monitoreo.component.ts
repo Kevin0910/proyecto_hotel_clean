@@ -38,4 +38,4 @@ export class MonitoreoComponent {
     this.monitoreoSeleccionado = objetoMonitoreo;
     this.modalMonitoreoService.abrirModalMonitoreo();
     }
-}
+  }

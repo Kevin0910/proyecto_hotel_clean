@@ -6,25 +6,43 @@
 
     <div class=" form-group">
       <div class="my-3">
-        <button class="btn btn-primary m-lg-2" type="button" (click)="mostrarBusqReporte = true; mostrarBusqManager = false">Busqueda de tipo de servicio</button>
-        <button class="btn btn-primary m-lg-2" type="button" (click)="mostrarBusqManager = true; mostrarBusqReporte = false">Busqueda por manager</button>
+        <!-- <button class="btn btn-primary m-lg-2" type="button" (click)="mostrarBusqTipoServicio = true; mostrarBusqManager = false">Búsqueda de tipo de servicio</button>
+        <button class="btn btn-primary m-lg-2" type="button" (click)="mostrarBusqManager = true; mostrarBusqTipoServicio = false">Búsqueda por manager</button>
       </div>
-<div *ng  If="mostrarBusqTipoServicio">
+
+<div *ngIf="mostrarBusqTipoServicio">
   <searchBox
-      (onDebouce)="busqCliente($event)"  placeholder="Buscar cliente">
+      (onDebouce)="busquedaServicio($event)"  placeholder="Buscar por tipo de servicio">
       </searchBox>
 </div>
 <div *ngIf="mostrarBusqManager">
   <searchBox
-      (onDebouce)="busqEmpleado($event)"  placeholder="Buscar empleado">
+      (onDebouce)="busquedaServicioManager($event)"  placeholder="Buscar por manager">
       </searchBox>
-</div>
+</div> -->
 
+
+<button class="btn btn-primary m-lg-2" type="button" (click)="mostrarBusqTipoServicio = true; mostrarBusqTipoServicio = false">Busqueda por tipo de servicio</button>
+<button class="btn btn-warning m-lg-2" type="button" (click)="mostrarBusqManager = true; mostrarBusqManager = false" >Busqueda por manager a cargo</button>
+</div>
+<div *ngIf="mostrarBusqTipoServicio">
+<searchBox
+(onDebouce)="busquedaPorServicio($event)"  placeholder="Buscar por tipo de servicio">
+</searchBox>
+</div>
+<div *ngIf="mostrarBusqManager">
+<searchBox
+(onDebouce)="busquedaPorManager($event)"  placeholder="Buscar por manager">
+</searchBox>
+</div>
 
     <!-- </div>
     <div *ngIf="clienteBusquedas.length === 0 else tablaClienteBusq">
-    </div> -->
-
+     -->
+</div>
+</div>
+<div class="my-3"  *ngIf="servicioARealizarBusquedas.length === 0 else tabla" >
+</div>
     <ng-template #tabla>
     <table class="table table-bordered table-striped">
       <thead>
@@ -50,7 +68,7 @@
       </tbody> -->
     </table>
   </ng-template>
-  </div>
+ 
 
 
     <hr>
@@ -72,7 +90,11 @@
           <td>{{ servicioARealizar.fecha }}</td>
           <td>{{ servicioARealizar.hora }}</td>
           <td>{{ servicioARealizar.cliente.nombre }} {{ servicioARealizar.cliente.apellido1}} {{ servicioARealizar.cliente.apellido2}} </td>
-        </tr>
+        </tr> 
       </tbody>
     </table>
+    <div>
+      <button class="btn col col-lg-4 btn-danger btn-block ml-4" (click)="downloadPDF()">Descargar PDF</button>
+    </div>
+  
 </div>

@@ -27,12 +27,15 @@
             "styles": [
               "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css",
-              "src/assets/css/bootstrap.min.css"
+              "src/assets/css/bootstrap.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
               "src/assets/js/bootstrap.bundle.min.js",
               "src/assets/js/bootstrap.min.js",
-              "src/assets/js/popper.min.js"
+              "src/assets/js/popper.min.js",
+              "node_modules/html2convas/dist/html2canvas.min.js",
+              "node_modules/jspdf/dist/jspdf.min.js"
             ]
           },
           "configurations": {
