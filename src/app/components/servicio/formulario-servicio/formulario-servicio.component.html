@@ -19,6 +19,16 @@
         <input type="time" class="form-control"  placeholder="Ingresar hora..." [(ngModel)] = "servicioARealizar.hora" name="hora" required>
       </div>
 
+      <!-- ** Listo -->
+      <!-- <div class="col-md-7">
+        <label for="manager" class="col-form-label ">manager a cargo <i class="bi bi-briefcase"></i></label>
+          <div class="col-sm-6">
+            <select [compareWith]="compararManager" class="form-control" [(ngModel)]="servicioARealizar.jefe" name="manager" required>
+              <option *ngFor="let manager of managers" [ngValue]="manager"> {{manager.jefe.id}}.- {{manager.jefe.nombre}} </option>
+            </select>
+          </div>
+      </div> -->
+
 <!-- ** Listo -->
       <div class="col-md-7">
         <label for="listaCliente" class="col-form-label ">Nombre del cliente <i class="bi bi-briefcase"></i></label>
@@ -28,6 +38,7 @@
             </select>
           </div>
       </div>
+
 
 
       <!-- TODO Falta mejorar o no hace bien su funcion -->

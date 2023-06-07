@@ -8,6 +8,7 @@ import { ObjetoServicio } from 'src/app/interfaces/servicio';
 import { FormControl } from '@angular/forms';
 import { Observable, flatMap, map } from 'rxjs';
 import swal from 'sweetalert2';
+import { Jefe } from 'src/app/interfaces/personal';
 
 @Component({
   selector: 'formulario-servicio',
@@ -21,6 +22,7 @@ export class FormularioServicioComponent {
 
   public tipoDeServicios: ObjetoServicio[];
   public listaClientes: ObjetoCliente[];
+  public managers: Jefe[];
   public errores: string[];
   public cliente: ObjetoCliente = new ObjetoCliente();
 
@@ -119,6 +121,11 @@ export class FormularioServicioComponent {
     }
 
     compararClientes(o1: ObjetoCliente, o2:ObjetoCliente):boolean{
+      return o1 && o2 ? o1.id === o2.id : o1 === o2;
+    }
+
+
+    compararManager(o1: Jefe, o2:Jefe):boolean{
       return o1 && o2 ? o1.id === o2.id : o1 === o2;
     }
 
